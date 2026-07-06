@@ -19,6 +19,28 @@ We fine-tune a U-Net convolutional neural network — originally developed for m
 | `plot_crown_area_histogram.py` | Figures | Crown area distribution histograms across cities (Extended Data Fig. 2). |
 | `prepare_ripley_data.py` / `run_sensitivity.py` | Analysis | Ripley's K spatial clustering analysis and deduplication-threshold sensitivity test (Extended Data Fig. 1, Fig. S6). |
 
+## Data
+
+Final, published per-city datasets live under `data/`:
+
+```
+data/
+├── boundaries/
+│   ├── <city>_exact_boundary.geojson        # city/study-area outline
+│   └── <city>_exact_block_groups.geojson    # census block groups / dissemination areas used in the analysis
+└── tree_points/
+    ├── cupertino_ripley_points_with_income.geojson.gz
+    └── bloomington_ripley_points_with_income.geojson.gz
+```
+
+Each `<city>_ripley_points_with_income` file is the final deduplicated per-tree point dataset (crown centroid, crown area, census join, and income) used throughout the analysis scripts. Cupertino's and Bloomington's are small enough to gzip and commit directly here (~2.3 MB and ~4.8 MB compressed); decompress with:
+
+```bash
+gunzip -k data/tree_points/cupertino_ripley_points_with_income.geojson.gz
+```
+
+**Austin's and Surrey's tree point datasets are not in this repo** — at 1.1 GB and 717 MB raw (~85 MB and ~52 MB even gzipped), they exceed what GitHub can host without Git LFS. These, along with the fine-tuned model weights (see below), will be deposited on [Zenodo](https://zenodo.org/) alongside the paper and linked here once published. If you need them sooner, contact the corresponding author.
+
 ## What you'll need to add
 
 This repo contains the analysis and post-processing code. To run the full pipeline end-to-end you'll also need the following, which are **not included here**:

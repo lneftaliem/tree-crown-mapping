@@ -19,11 +19,15 @@ notebooks/urbantreedata_2023/
 all_trees/
 *.tif
 *.tiff
-*.geojson
 *.shp
 *.shx
 *.dbf
 *.prj
+
+# GeoJSON is ignored by default (intermediate/working files), except the
+# published boundary and tree-point datasets committed under data/
+*.geojson
+!data/**/*.geojson
 
 # Model weights (too large for plain git — see README for hosting instructions)
 *.keras
