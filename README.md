@@ -39,7 +39,7 @@ Each `<city>_ripley_points_with_income` file is the final deduplicated per-tree 
 gunzip -k data/tree_points/cupertino_ripley_points_with_income.geojson.gz
 ```
 
-**Austin's and Surrey's tree point datasets are not in this repo** — at 1.1 GB and 717 MB raw (~85 MB and ~52 MB even gzipped), they exceed what GitHub can host without Git LFS. These, along with the fine-tuned model weights (see below), will be deposited on [Zenodo](https://zenodo.org/) alongside the paper and linked here once published. If you need them sooner, contact the corresponding author.
+**Austin's and Surrey's tree point datasets are not in this repo** — at 1.1 GB and 717 MB raw (~85 MB and ~52 MB even gzipped), they exceed what GitHub can host in a plain repo. They're **available on request** — contact the corresponding author.
 
 ## What you'll need to add
 
@@ -49,11 +49,9 @@ This repo contains the analysis and post-processing code. To run the full pipeli
    [ankitkariryaa/An-unexpectedly-large-count-of-trees-in-the-western-Sahara-and-Sahel](https://github.com/ankitkariryaa/An-unexpectedly-large-count-of-trees-in-the-western-Sahara-and-Sahel) (MIT licensed).
    Clone that repo and copy its `notebooks/core/` and a `notebooks/config/RasterAnalysis.py` (see that repo's `configTemplate/`) into your working directory, or add it as a git submodule. Please retain their license/attribution.
 
-2. **Fine-tuned model weights.** `trees_20260120-1928_AdaDelta_weightmap_tversky_012_256_final.keras` (~376 MB) is too large for a plain GitHub push (GitHub blocks files over 100 MB) and isn't included in this repo. To make it available to collaborators, either:
-   - Track it with [Git LFS](https://git-lfs.com/) (`git lfs track "*.keras"`) if you want it versioned in this repo, or
-   - Host it externally (e.g., [Zenodo](https://zenodo.org/), Hugging Face, or a lab Google Drive/Box) and link the download URL here once the paper is public.
+2. **Fine-tuned model weights.** `trees_20260120-1928_AdaDelta_weightmap_tversky_012_256_final.keras` (~376 MB) is too large for a plain GitHub push (GitHub blocks files over 100 MB) and isn't included in this repo. **Available on request** — contact the corresponding author.
 
-   Once you have the file locally, point the scripts at it via the `TREE_MAPPING_BASE_DIR` environment variable (see below) or place it at `saved_models/UNet/` under your base directory.
+   Once you have the file, point the scripts at it via the `TREE_MAPPING_BASE_DIR` environment variable (see below) or place it at `saved_models/UNet/` under your base directory.
 
 3. **Satellite imagery.** Imagery was licensed from Vantor (QuickBird-2, GeoEye-1, WorldView-2, WorldView-3) under the Next View License and cannot be redistributed here. You'll need your own licensed source of comparable sub-meter multispectral imagery.
 
