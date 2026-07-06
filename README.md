@@ -30,16 +30,28 @@ data/
 │   └── <city>_exact_block_groups.geojson    # census block groups / dissemination areas used in the analysis
 └── tree_points/
     ├── cupertino_ripley_points_with_income.geojson.gz
-    └── bloomington_ripley_points_with_income.geojson.gz
+    ├── bloomington_ripley_points_with_income.geojson.gz
+    ├── austin_ripley_points_with_income.geojson.gz.part00 ... part09
+    └── surrey_ripley_points_with_income.geojson.gz.part00 ... part05
 ```
 
-Each `<city>_ripley_points_with_income` file is the final deduplicated per-tree point dataset (crown centroid, crown area, census join, and income) used throughout the analysis scripts. Cupertino's and Bloomington's are small enough to gzip and commit directly here (~2.3 MB and ~4.8 MB compressed); decompress with:
+Each `<city>_ripley_points_with_income` file is the final deduplicated per-tree point dataset (crown centroid, crown area, census join, and income) used throughout the analysis scripts.
+
+Cupertino's and Bloomington's are small enough to commit as a single gzip file (~2.3 MB and ~4.8 MB compressed); decompress with:
 
 ```bash
 gunzip -k data/tree_points/cupertino_ripley_points_with_income.geojson.gz
 ```
 
-**Austin's and Surrey's tree point datasets are not in this repo** — at 1.1 GB and 717 MB raw (~85 MB and ~52 MB even gzipped), they exceed what GitHub can host in a plain repo. They're **available on request** — contact the corresponding author.
+Austin's and Surrey's raw datasets are 1.1 GB and 717 MB — too large for a single file on GitHub (100 MB hard limit) even after gzip (~85 MB and ~52 MB compressed), and too large for the web upload UI (25 MB per file) either way. They're split into ~9 MB chunks with `split`. Reassemble and decompress with:
+
+```bash
+cat data/tree_points/austin_ripley_points_with_income.geojson.gz.part* > austin_ripley_points_with_income.geojson.gz
+gunzip austin_ripley_points_with_income.geojson.gz
+
+cat data/tree_points/surrey_ripley_points_with_income.geojson.gz.part* > surrey_ripley_points_with_income.geojson.gz
+gunzip surrey_ripley_points_with_income.geojson.gz
+```
 
 ## What you'll need to add
 
