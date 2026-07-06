@@ -1,0 +1,26 @@
+# Core scientific stack
+numpy
+pandas
+scipy
+scikit-image
+statsmodels
+
+# Geospatial
+geopandas
+shapely
+rasterio
+fiona
+rtree
+affine
+
+# Deep learning (model inference)
+tensorflow>=2.10,<2.16
+
+# Imaging / plotting
+matplotlib
+opencv-python-headless
+Pillow
+
+# Utilities
+tqdm
+joblib

@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Environments
+.venv/
+venv/
+env/
+
+# Data / outputs (large, city-specific — not tracked in git)
+cutouts/
+raw_images/
+temp_data/
+analysis_output/
+notebooks/census_boundaries/
+notebooks/income_data/
+notebooks/urbantreedata_2023/
+all_trees/
+*.tif
+*.tiff
+*.geojson
+*.shp
+*.shx
+*.dbf
+*.prj
+
+# Model weights (too large for plain git — see README for hosting instructions)
+*.keras
+*.h5
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
