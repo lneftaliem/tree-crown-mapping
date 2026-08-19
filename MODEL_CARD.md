@@ -44,7 +44,7 @@ across Austin (TX), Bloomington (IN), Cupertino (CA), and Surrey (BC)
 - **Shared by:** [lneftaliem](https://github.com/lneftaliem)
 - **Model type:** Semantic segmentation (fully convolutional U-Net, Ronneberger et al. 2015) for individual tree-crown delineation from remote-sensing imagery
 - **Language(s):** Not applicable (geospatial imagery model)
-- **License:** MIT (free to use, modify, and redistribute with attribution; see [`LICENSE`](LICENSE)). This covers the fine-tuning / analysis code and the derived per-tree datasets in this repository, and matches the MIT-licensed upstream framework (Kariryaa et al.; Brandt et al., 2020). The fine-tuned weights are **available on request** from the corresponding author and are intended for free use under the same terms; the pretrained base weights originate from Brandt et al. (2020) (via ORNL DAAC), so retain their attribution when redistributing weight derivatives.
+- **License:** MIT (free to use, modify, and redistribute with attribution; see [`LICENSE`](LICENSE)). This covers the fine-tuning / analysis code and the derived per-tree datasets in this repository, and matches the MIT-licensed upstream framework (Kariryaa et al.; Brandt et al., 2020). The fine-tuned weights are distributed as a GitHub Release asset (see the repository's [Releases page](https://github.com/lneftaliem/tree-crown-mapping/releases/latest)) and are released for free use under the same terms; the pretrained base weights originate from Brandt et al. (2020) (via ORNL DAAC), so retain their attribution when redistributing weight derivatives.
 - **Finetuned from model:** Sahel dryland-vegetation U-Net of [Brandt et al., 2020](https://doi.org/10.1038/s41586-020-2824-5) / [Tucker et al., 2023](https://doi.org/10.1126/science.abg1740), pretrained on 89,899 manually annotated trees across an environmental gradient in the African Sahel, built on the [ankitkariryaa/An-unexpectedly-large-count-of-trees-in-the-western-Sahara-and-Sahel](https://github.com/ankitkariryaa/An-unexpectedly-large-count-of-trees-in-the-western-Sahara-and-Sahel) framework (MIT). Pretrained weights obtained from the Brandt et al. (2020) authors (available via ORNL DAAC).
 
 ### Model Sources
@@ -52,7 +52,7 @@ across Austin (TX), Bloomington (IN), Cupertino (CA), and Surrey (BC)
 - **Repository:** https://github.com/lneftaliem/tree-crown-mapping
 - **Paper:** Neftaliem, L., Anderson, C. J., Igel, C., Field, C. B., Jackson, R. B., Small, J., & Tucker, C. J. "Mapping tree crowns across four North American cities." Manuscript submitted for publication.
 - **Demo:** N/A
-- **Weights file:** `trees_20260120-1928_AdaDelta_weightmap_tversky_012_256_final.keras` (~376 MB; not hosted in the repo — available on request). Note: the manuscript reports the fine-tune used the Adam optimizer; the "AdaDelta" token in the filename is legacy naming inherited from the base framework.
+- **Weights file:** `trees_20260120-1928_AdaDelta_weightmap_tversky_012_256_final.keras` (~376 MB), distributed as a GitHub Release asset — see the repository's [Releases page](https://github.com/lneftaliem/tree-crown-mapping/releases/latest). Note: the manuscript reports the fine-tune used the Adam optimizer; the "AdaDelta" token in the filename is legacy naming inherited from the base framework.
 
 ## Uses
 
