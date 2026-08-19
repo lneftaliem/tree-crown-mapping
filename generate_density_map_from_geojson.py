@@ -33,6 +33,21 @@ import gc
 
 # Sherlock Base Path
 BASE_DIR = os.environ.get("TREE_MAPPING_BASE_DIR", os.getcwd())
+
+# Repo directory (for locating repro_data.py + committed data/), independent of CWD.
+REPO_DIR = os.path.dirname(os.path.abspath(__file__))
+if REPO_DIR not in sys.path:
+    sys.path.insert(0, REPO_DIR)
+
+# Materialise the committed public datasets (points + boundaries) into the
+# layout this script reads from, so the map reproduces from a fresh clone.
+# No-op if the data is already staged. See repro_data.py.
+try:
+    import repro_data
+    repro_data.stage_all(points=True, boundaries=True)
+except Exception as _e:
+    print(f"[repro_data] staging skipped: {_e}")
+
 # Sherlock path for point datasets (Ripley CSVs)
 DATA_DIR = os.path.join(BASE_DIR, "analysis_output", "ripley_data")
 
@@ -110,8 +125,11 @@ def load_census_gdf(city_lower, boundary=None):
 # ============================================================================
 
 def main():
-    cities = ['austin', 'bloomington', 'cupertino', 'surrey']
-    city_labels = {'austin': 'Austin, TX', 'bloomington': 'Bloomington, IN', 
+    # Override with e.g. TREE_MAPPING_CITIES=cupertino,bloomington for a quick
+    # subset run (the two single-file cities load in seconds).
+    cities = [c.strip().lower() for c in os.environ.get(
+        "TREE_MAPPING_CITIES", "austin,bloomington,cupertino,surrey").split(",") if c.strip()]
+    city_labels = {'austin': 'Austin, TX', 'bloomington': 'Bloomington, IN',
                    'cupertino': 'Cupertino, CA', 'surrey': 'Surrey, BC'}
     
     city_results = {}
