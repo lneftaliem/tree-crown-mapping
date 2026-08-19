@@ -1,6 +1,6 @@
-# Individual Tree Crown Mapping Across Four North American Cities
+# Mapping Tree Crowns Across Four North American Cities
 
-Code accompanying the manuscript **"Individual tree crown mapping across four North American cities from high-resolution satellite imagery"** (Neftaliem et al.). The paper has been submitted for publication.
+Code accompanying the manuscript **"Mapping tree crowns across four North American cities"** (Neftaliem et al.). The paper has been submitted for publication.
 
 We fine-tune a U-Net convolutional neural network — originally developed for mapping dryland woody vegetation in the African Sahel ([Brandt et al., 2020](https://doi.org/10.1038/s41586-020-2824-5); [Tucker et al., 2023](https://doi.org/10.1126/science.abg1740)) — to delineate individual tree crowns in Austin (TX), Bloomington (IN), Cupertino (CA), and Surrey (BC) from 50 cm multispectral satellite imagery. The model is fine-tuned on 113 annotated images (4,589 crowns) and applied to map ~3.3 million trees across the four cities without per-city retraining. We then relate crown-level tree density, canopy cover, and crown size to census-level median household income.
 
