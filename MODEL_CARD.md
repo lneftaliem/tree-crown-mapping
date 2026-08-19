@@ -1,4 +1,4 @@
-# Model Card: Individual Tree Crown Segmentation U-Net (4-City North American Fine-Tune)
+# Model Card: Mapping tree crowns across four North American cities
 
 A fully convolutional **U-Net** that segments individual tree crowns from 50 cm
 multispectral satellite imagery. It is a fine-tune of the dryland-vegetation
@@ -7,10 +7,7 @@ and peri-urban tree crowns in four North American cities.
 
 > This card follows the Hugging Face
 > [annotated model card template](https://huggingface.co/docs/hub/model-card-annotated).
-> Values are taken from the accompanying manuscript (Neftaliem et al., submitted
-> to *Nature Communications Sustainability*). A few fields the manuscript does not
-> report (e.g. training wall-clock time and carbon) remain marked
-> **[Not reported]**.
+> Values are taken from the accompanying manuscript (Neftaliem et al., 2026).
 
 ## Table of Contents
 
@@ -53,7 +50,7 @@ across Austin (TX), Bloomington (IN), Cupertino (CA), and Surrey (BC)
 ### Model Sources
 
 - **Repository:** https://github.com/lneftaliem/tree-crown-mapping
-- **Paper:** Neftaliem, L., Anderson, C. J., Igel, C., Field, C. B., Jackson, R. B., Small, J., & Tucker, C. J. "Mapping tree crowns across four North American cities." Manuscript submitted to *Nature Communications Sustainability*. [DOI to be added]
+- **Paper:** Neftaliem, L., Anderson, C. J., Igel, C., Field, C. B., Jackson, R. B., Small, J., & Tucker, C. J. "Mapping tree crowns across four North American cities." Manuscript submitted for publication.
 - **Demo:** N/A
 - **Weights file:** `trees_20260120-1928_AdaDelta_weightmap_tversky_012_256_final.keras` (~376 MB; not hosted in the repo — available on request). Note: the manuscript reports the fine-tune used the Adam optimizer; the "AdaDelta" token in the filename is legacy naming inherited from the base framework.
 
@@ -220,8 +217,7 @@ Pixel-level segmentation performance on held-out data (Fig. S1):
 | Dice coefficient | 0.550 |
 | IoU (Jaccard) | 0.379 |
 
-Confusion (normalised): 95.2% true-negative rate (non-tree), 65.7% true-positive
-rate (tree). Object-level correspondence with municipal inventories was
+Object-level correspondence with municipal inventories was
 non-significant in Austin (ρ = 0.04) and significant in Bloomington (ρ = 0.38),
 Cupertino (ρ = 0.67), and Surrey (ρ = 0.39); model counts exceeded inventory
 counts in every city (2.5×–36×), reflecting detection of trees on private land
@@ -286,7 +282,7 @@ GB of RAM/disk.
   title   = {Mapping tree crowns across four North American cities},
   author  = {Neftaliem, Leona and Anderson, Connor J. and Igel, Christian and Field, Christopher B. and Jackson, Robert B. and Small, Jennifer and Tucker, Compton J.},
   year    = {2026},
-  note    = {Manuscript submitted to Nature Communications Sustainability}
+  note    = {Manuscript submitted for publication}
 }
 
 @article{brandt2020unexpectedly,
@@ -313,7 +309,7 @@ GB of RAM/disk.
 
 Neftaliem, L., Anderson, C. J., Igel, C., Field, C. B., Jackson, R. B., Small, J.,
 & Tucker, C. J. (2026). *Mapping tree crowns across four North American cities*
-[Manuscript submitted for publication, Nature Communications Sustainability].
+[Manuscript submitted for publication].
 
 ## Glossary
 

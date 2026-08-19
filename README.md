@@ -1,4 +1,4 @@
-# Mapping Tree Crowns Across Four North American Cities
+# Mapping tree crowns across four North American cities
 
 Code accompanying the manuscript **"Mapping tree crowns across four North American cities"** (Neftaliem et al.). The paper has been submitted for publication.
 
@@ -150,8 +150,8 @@ Scripts default to the current working directory if this isn't set. Expected sub
 
 ## Citation
 
-If you use this code, please cite the manuscript (citation to be updated once published) and the original detection framework:
+If you use this code, please cite the manuscript and the original detection framework:
 
-> Neftaliem, L., Anderson, C., Igel, C., Field, C.B., Jackson, R.B., Small, J., Tucker, C.J. Individual tree crown mapping across four North American cities from high-resolution satellite imagery. Manuscript submitted for publication.
+> Neftaliem, L., Anderson, C.J., Igel, C., Field, C.B., Jackson, R.B., Small, J., Tucker, C.J. Mapping tree crowns across four North American cities. Manuscript submitted for publication.
 
-> Brandt, M. et al. An unexpectedly large count of trees in the western Sahara and Sahel. *Nature* 587, 78–82 (2020).
+> Brandt, M. et al. An unexpectedly large count of trees in the West African Sahara and Sahel. *Nature* 587, 78–82 (2020).
