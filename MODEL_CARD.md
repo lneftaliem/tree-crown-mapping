@@ -217,6 +217,10 @@ Pixel-level segmentation performance on held-out data (Fig. S1):
 | Dice coefficient | 0.550 |
 | IoU (Jaccard) | 0.379 |
 
+The normalised confusion matrix over the 7,471,104 validation pixels (Fig. S1)
+shows a 95.2% true-negative rate on non-tree pixels and a 65.7% true-positive
+rate on tree pixels.
+
 Object-level correspondence with municipal inventories was
 non-significant in Austin (ρ = 0.04) and significant in Bloomington (ρ = 0.38),
 Cupertino (ρ = 0.67), and Surrey (ρ = 0.39); model counts exceeded inventory
