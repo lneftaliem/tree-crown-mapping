@@ -17,6 +17,20 @@ if not os.path.exists(BASE_DIR):
 if BASE_DIR not in sys.path:
     sys.path.insert(0, BASE_DIR)
 
+# Repo directory (for locating repro_data.py + committed data/), independent of CWD.
+REPO_DIR = os.path.dirname(os.path.abspath(__file__))
+if REPO_DIR not in sys.path:
+    sys.path.insert(0, REPO_DIR)
+
+# Materialise the committed public datasets (data/) into the layout this script
+# reads from, so the figure reproduces directly from a fresh clone. No-op if the
+# data is already staged. See repro_data.py.
+try:
+    import repro_data
+    repro_data.stage_all(points=True, boundaries=False)
+except Exception as _e:  # never let staging block a run that already has data
+    print(f"[repro_data] staging skipped: {_e}")
+
 # Output directory for all figures and graphics
 OUTPUT_DIR = os.path.join(BASE_DIR, "analysis_output")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -24,6 +38,7 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 # Candidate directories for finding pre-computed datasets (local + Sherlock paths)
 DATA_DIRS = [
     os.path.join(BASE_DIR, "analysis_output", "ripley_data"),
+    os.path.join(REPO_DIR, "data", "tree_points"),  # committed public data
     os.path.join(os.path.dirname(BASE_DIR), 'ripley_data_0429206', 'all_trees'),
     os.path.join(BASE_DIR, 'ripley_data_0429206', 'all_trees'),
     os.path.join(os.getcwd(), 'analysis_output', 'ripley_data'),
@@ -73,7 +88,10 @@ plt.rcParams.update({
 })
 PUBLIC_DPI = 600
 
-CITIES = ['austin', 'bloomington', 'cupertino', 'surrey']
+# Cities to plot. Override with e.g. TREE_MAPPING_CITIES=cupertino,bloomington
+# to reproduce a subset quickly (the two single-file cities load in seconds).
+CITIES = [c.strip().lower() for c in os.environ.get(
+    "TREE_MAPPING_CITIES", "austin,bloomington,cupertino,surrey").split(",") if c.strip()]
 
 
 def round_to_3_sig_figs(n):

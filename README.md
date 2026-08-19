@@ -1,6 +1,6 @@
-# Individual Tree Crown Mapping Across Four North American Cities
+# Mapping tree crowns across four North American cities
 
-Code accompanying the manuscript **"Individual tree crown mapping across four North American cities from high-resolution satellite imagery"** (Neftaliem et al.). The paper has been submitted for publication.
+Code accompanying the manuscript **"Mapping tree crowns across four North American cities"** (Neftaliem et al.). The paper has been submitted for publication.
 
 We fine-tune a U-Net convolutional neural network — originally developed for mapping dryland woody vegetation in the African Sahel ([Brandt et al., 2020](https://doi.org/10.1038/s41586-020-2824-5); [Tucker et al., 2023](https://doi.org/10.1126/science.abg1740)) — to delineate individual tree crowns in Austin (TX), Bloomington (IN), Cupertino (CA), and Surrey (BC) from 50 cm multispectral satellite imagery. The model is fine-tuned on 113 annotated images (4,589 crowns) and applied to map ~3.3 million trees across the four cities without per-city retraining. We then relate crown-level tree density, canopy cover, and crown size to census-level median household income.
 
@@ -18,6 +18,10 @@ We fine-tune a U-Net convolutional neural network — originally developed for m
 | `tree_size_vs_income.py` | Analysis | Income vs. mean/median crown area per census unit (Fig. 4). |
 | `plot_crown_area_histogram.py` | Figures | Crown area distribution histograms across cities (Extended Data Fig. 2). |
 | `prepare_ripley_data.py` / `run_sensitivity.py` | Analysis | Ripley's K spatial clustering analysis and deduplication-threshold sensitivity test (Extended Data Fig. 1, Fig. S6). |
+| `repro_data.py` | Reproducibility | Stages the committed `data/` archives (reassembles the split files, decompresses) into the layout the figure scripts read from. Imported automatically by the reproducible scripts. |
+| `reproduce.sh` | Reproducibility | One command that stages the committed data and regenerates every figure that can be built from the public data (no imagery or model weights required). |
+
+A model card for the fine-tuned network is provided in [`MODEL_CARD.md`](MODEL_CARD.md).
 
 ## Data
 
@@ -52,6 +56,32 @@ gunzip austin_ripley_points_with_income.geojson.gz
 cat data/tree_points/surrey_ripley_points_with_income.geojson.gz.part* > surrey_ripley_points_with_income.geojson.gz
 gunzip surrey_ripley_points_with_income.geojson.gz
 ```
+
+## Reproducing the published figures (from committed data only)
+
+A subset of the paper's figures can be regenerated end-to-end from the data committed in this repository, with **no licensed imagery and no model weights** — only the Python packages in `requirements.txt`. After `pip install -r requirements.txt`:
+
+```bash
+./reproduce.sh
+```
+
+This stages the committed `data/` archives into the locations the scripts read from (reassembling the split Austin/Surrey files and decompressing every city), then regenerates the figures below into `analysis_output/`:
+
+| Output file | Paper figure | Inputs (all committed) |
+|---|---|---|
+| `crown_area_histogram.png` | Crown-area distributions (Extended Data Fig. 2) | `data/tree_points/` |
+| `combined_income_crown_area_scatter.{png,pdf}` | Income vs. crown area | `data/tree_points/` |
+| `identical_tree_density_map.{png,pdf}` | Tree-density choropleth (Fig. 1) | `data/tree_points/` + `data/boundaries/` |
+
+Reassembling and reading the full Austin (1.1 GB) and Surrey (717 MB) GeoJSONs needs several GB of free RAM and disk. To verify the pipeline quickly on just the two small, single-file cities:
+
+```bash
+TREE_MAPPING_CITIES=cupertino,bloomington ./reproduce.sh
+```
+
+You can also run the figure scripts directly — `python plot_crown_area_histogram.py` or `python generate_density_map_from_geojson.py` — as each one auto-stages the committed data via `repro_data.py` on import. Staging is idempotent and never overwrites existing outputs.
+
+The remaining figures (canopy cover and inventory-comparison analyses, Fig. 4's temperature-mediation model, and the raster-based detection maps) require inputs that cannot be redistributed here — licensed imagery, the model weights, municipal inventories, and raw census/temperature layers; see **What you'll need to add** below. The committed per-tree datasets already carry each tree's crown area, census unit, median household income, and demographic shares, so most census-level analyses can be recomputed directly from `data/tree_points/` without rerunning detection.
 
 ## What you'll need to add
 
@@ -120,8 +150,8 @@ Scripts default to the current working directory if this isn't set. Expected sub
 
 ## Citation
 
-If you use this code, please cite the manuscript (citation to be updated once published) and the original detection framework:
+If you use this code, please cite the manuscript and the original detection framework:
 
-> Neftaliem, L., Anderson, C., Igel, C., Field, C.B., Jackson, R.B., Small, J., Tucker, C.J. Individual tree crown mapping across four North American cities from high-resolution satellite imagery. Manuscript submitted for publication.
+> Neftaliem, L., Anderson, C.J., Igel, C., Field, C.B., Jackson, R.B., Small, J., Tucker, C.J. Mapping tree crowns across four North American cities. Manuscript submitted for publication.
 
-> Brandt, M. et al. An unexpectedly large count of trees in the western Sahara and Sahel. *Nature* 587, 78–82 (2020).
+> Brandt, M. et al. An unexpectedly large count of trees in the West African Sahara and Sahel. *Nature* 587, 78–82 (2020).
