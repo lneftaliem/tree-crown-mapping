@@ -177,8 +177,8 @@ partitioned approximately **80/10/10** into training / validation / test sets.
 #### Speeds, Sizes, Times
 
 - **Trained weights file size:** ~376 MB (`.keras`).
-- **Compute:** Stanford Sherlock HPC cluster.
-- **Training wall-clock time / throughput:** [Not reported]
+- **Compute:** 3 × NVIDIA A100 SXM4 40 GB GPUs (2 nodes) on the Stanford Sherlock cluster.
+- **Final fine-tuning run:** 00:17:40 wall-clock (≈0.88 A100 GPU-hours) for 100 epochs — Slurm job 13894282, completed 2026-01-20. Iterative development involved additional training runs (cumulative wall-clock on the order of several GPU-hours).
 
 ## Evaluation
 
@@ -237,14 +237,15 @@ exact crown-boundary delineation.
 
 ## Environmental Impact
 
-Carbon emissions can be estimated with the
+Figures below are for the final fine-tuning run that produced the released weights
+(Slurm job 13894282); carbon can be cross-checked with the
 [ML CO2 Impact calculator](https://mlco2.github.io/impact#compute).
 
-- **Hardware Type:** Stanford Sherlock HPC cluster (GPU nodes) — specific GPU model [Not reported]
-- **Hours used:** [Not reported]
-- **Cloud Provider:** N/A (on-premise university HPC)
-- **Compute Region:** Stanford, California, USA
-- **Carbon Emitted:** [Not reported]
+- **Hardware Type:** 3 × NVIDIA A100 SXM4 40 GB (Ampere), across 2 nodes on the Stanford Sherlock cluster (Stanford Research Computing Facility).
+- **Hours used:** 00:17:40 wall-clock ≈ 0.88 A100 GPU-hours.
+- **Cloud Provider:** N/A (on-premise university HPC).
+- **Compute Region:** Stanford, California, USA.
+- **Carbon Emitted:** ≈0.2 kg CO₂e — from Slurm-metered energy of ≈0.87 kWh for the run and a California grid intensity of ~0.24 kg CO₂/kWh; a negligible footprint. Development runs add a few GPU-hours more, still well under ~1 kg CO₂e.
 
 ## Technical Specifications
 
@@ -262,9 +263,10 @@ KD-Tree deduplication step removes cross-tile double counts within 1.0 m
 
 #### Hardware
 
-Stanford Sherlock HPC cluster (GPU) for fine-tuning; the repository's inference
-and post-processing scripts run on CPU/GPU workstations. Reassembling and reading
-the full per-city GeoJSONs needs several GB of RAM/disk.
+Fine-tuned on 3 × NVIDIA A100 SXM4 40 GB GPUs (2 nodes) on the Stanford Sherlock
+cluster. The repository's inference and post-processing scripts run on CPU/GPU
+workstations; reassembling and reading the full per-city GeoJSONs needs several
+GB of RAM/disk.
 
 #### Software
 
