@@ -91,7 +91,7 @@ This repo contains the analysis and post-processing code. To run the full pipeli
    [ankitkariryaa/An-unexpectedly-large-count-of-trees-in-the-western-Sahara-and-Sahel](https://github.com/ankitkariryaa/An-unexpectedly-large-count-of-trees-in-the-western-Sahara-and-Sahel) (MIT licensed).
    Clone that repo and copy its `notebooks/core/` and a `notebooks/config/RasterAnalysis.py` (see that repo's `configTemplate/`) into your working directory, or add it as a git submodule. Please retain their license/attribution.
 
-2. **Fine-tuned model weights.** `trees_20260120-1928_AdaDelta_weightmap_tversky_012_256_final.keras` (~376 MB) is too large for a plain GitHub push (GitHub blocks files over 100 MB), so it is distributed as a **GitHub Release asset**: download it from the repository's [**Releases** page](https://github.com/lneftaliem/tree-crown-mapping/releases/latest) (provided as a zip — unzip to get the `.keras` file).
+2. **Fine-tuned model weights.** `trees_20260120-1928_AdaDelta_weightmap_tversky_012_256_final.keras` (~376 MB) is too large for a plain GitHub push (GitHub blocks files over 100 MB), so it is distributed as a **GitHub Release asset**: download it from the repository's [**Releases** page](https://github.com/lneftaliem/tree-crown-mapping/releases/latest) (provided as a ~327 MB zip — unzip to get the ~376 MB `.keras` file).
 
    Once you have the file, point the scripts at it via the `TREE_MAPPING_BASE_DIR` environment variable (see below) or place it at `saved_models/UNet/` under your base directory.
 

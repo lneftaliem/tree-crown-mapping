@@ -52,7 +52,7 @@ across Austin (TX), Bloomington (IN), Cupertino (CA), and Surrey (BC)
 - **Repository:** https://github.com/lneftaliem/tree-crown-mapping
 - **Paper:** Neftaliem, L., Anderson, C. J., Igel, C., Field, C. B., Jackson, R. B., Small, J., & Tucker, C. J. "Mapping tree crowns across four North American cities." Manuscript submitted for publication.
 - **Demo:** N/A
-- **Weights file:** `trees_20260120-1928_AdaDelta_weightmap_tversky_012_256_final.keras` (~376 MB), distributed as a GitHub Release asset — see the repository's [Releases page](https://github.com/lneftaliem/tree-crown-mapping/releases/latest). Note: the manuscript reports the fine-tune used the Adam optimizer; the "AdaDelta" token in the filename is legacy naming inherited from the base framework.
+- **Weights file:** `trees_20260120-1928_AdaDelta_weightmap_tversky_012_256_final.keras` (~376 MB uncompressed; ~327 MB as the downloadable zip), distributed as a GitHub Release asset — see the repository's [Releases page](https://github.com/lneftaliem/tree-crown-mapping/releases/latest). Note: the manuscript reports the fine-tune used the Adam optimizer; the "AdaDelta" token in the filename is legacy naming inherited from the base framework.
 
 ## Uses
 
