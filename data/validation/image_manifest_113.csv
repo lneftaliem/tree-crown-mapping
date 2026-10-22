@@ -1,0 +1,114 @@
+patch_id,city,source_tile_id,split_role,is_independent_test,canopy_stratum,ref_canopy_cover_pct,ref_tree_count,ref_canopy_area_m2
+ndvi_austin_patch_10.png,Austin,035_138,Training,False,Low Canopy (<15%),12.7777099609375,79,2093.5
+ndvi_austin_patch_11.png,Austin,035_138,Training,False,Intermediate (15-35%),23.345947265625,129,3825.0
+ndvi_austin_patch_113.png,Austin,035_138,Training,False,Low Canopy (<15%),3.74908447265625,13,614.25
+ndvi_austin_patch_130.png,Austin,035_138,Training,False,Low Canopy (<15%),11.74163818359375,30,1923.75
+ndvi_austin_patch_15.png,Austin,035_138,Training,False,Intermediate (15-35%),29.02984619140625,162,4756.25
+ndvi_austin_patch_168.png,Austin,035_138,Training,False,Low Canopy (<15%),11.54022216796875,84,1890.75
+ndvi_austin_patch_186.png,Austin,035_138,Training,False,Low Canopy (<15%),11.7156982421875,42,1919.5
+ndvi_austin_patch_187.png,Austin,035_138,Training,False,Low Canopy (<15%),7.86590576171875,46,1288.75
+ndvi_austin_patch_198.png,Austin,035_138,Training,False,Low Canopy (<15%),3.179931640625,29,521.0
+ndvi_austin_patch_211.png,Austin,035_138,Training,False,Low Canopy (<15%),4.05426025390625,32,664.25
+ndvi_austin_patch_242.png,Austin,035_138,Training,False,Intermediate (15-35%),15.24505615234375,38,2497.75
+ndvi_austin_patch_265.png,Austin,035_138,Training,False,Low Canopy (<15%),7.72247314453125,41,1265.25
+ndvi_austin_patch_266.png,Austin,035_138,Training,False,Low Canopy (<15%),2.1759033203125,17,356.5
+ndvi_austin_patch_292.png,Austin,035_138,Training,False,Low Canopy (<15%),3.21044921875,7,526.0
+ndvi_austin_patch_305.png,Austin,035_138,Training,False,Low Canopy (<15%),6.65740966796875,55,1090.75
+ndvi_austin_patch_317.png,Austin,035_138,Training,False,Low Canopy (<15%),3.60870361328125,63,591.25
+ndvi_austin_patch_39.png,Austin,035_138,Training,False,Low Canopy (<15%),3.3447265625,24,548.0
+ndvi_austin_patch_423.png,Austin,035_138,Training,False,Low Canopy (<15%),2.90069580078125,22,475.25
+ndvi_austin_patch_455.png,Austin,035_138,Training,False,Low Canopy (<15%),6.02874755859375,23,987.75
+ndvi_austin_patch_55.png,Austin,035_138,Training,False,Low Canopy (<15%),13.46435546875,102,2206.0
+ndvi_austin_patch_65.png,Austin,035_138,Training,False,Low Canopy (<15%),13.1866455078125,50,2160.5
+ndvi_austin_patch_70.png,Austin,035_138,Training,False,Low Canopy (<15%),10.06317138671875,106,1648.75
+ndvi_austin_patch_9.png,Austin,035_138,Training,False,Intermediate (15-35%),15.33203125,66,2512.0
+ndvi_austin_patch_90.png,Austin,035_138,Training,False,Low Canopy (<15%),2.154541015625,10,353.0
+ndvi_austin_patch_area_68.png,Austin,035_138,Training,False,Low Canopy (<15%),11.56005859375,57,1894.0
+ndvi_bloomington_patch_167.png,Bloomington,101_201,Independent Test,True,Low Canopy (<15%),9.26513671875,31,1518.0
+ndvi_bloomington_patch_197.png,Bloomington,101_201,Independent Test,True,Low Canopy (<15%),12.21771240234375,82,2001.75
+ndvi_bloomington_patch_2.png,Bloomington,101_201,Independent Test,True,Intermediate (15-35%),15.26336669921875,33,2500.75
+ndvi_bloomington_patch_208.png,Bloomington,101_201,Independent Test,True,Low Canopy (<15%),6.72760009765625,41,1102.25
+ndvi_bloomington_patch_237.png,Bloomington,101_201,Independent Test,True,Intermediate (15-35%),16.06597900390625,71,2632.25
+ndvi_bloomington_patch_238.png,Bloomington,101_201,Independent Test,True,Intermediate (15-35%),21.86279296875,79,3582.0
+ndvi_bloomington_patch_239.png,Bloomington,101_201,Independent Test,True,Low Canopy (<15%),4.925537109375,25,807.0
+ndvi_bloomington_patch_291.png,Bloomington,101_201,Independent Test,True,Low Canopy (<15%),7.46612548828125,44,1223.25
+ndvi_bloomington_patch_33.png,Bloomington,101_201,Independent Test,True,Low Canopy (<15%),3.56292724609375,17,583.75
+ndvi_bloomington_patch_332.png,Bloomington,101_201,Independent Test,True,Low Canopy (<15%),8.00933837890625,30,1312.25
+ndvi_bloomington_patch_4.png,Bloomington,101_201,Independent Test,True,Intermediate (15-35%),23.968505859375,45,3927.0
+ndvi_bloomington_patch_417.png,Bloomington,101_201,Independent Test,True,Low Canopy (<15%),3.558349609375,13,583.0
+ndvi_bloomington_patch_51.png,Bloomington,101_201,Independent Test,True,Low Canopy (<15%),8.42132568359375,49,1379.75
+ndvi_bloomington_patch_52.png,Bloomington,101_201,Independent Test,True,Low Canopy (<15%),1.88140869140625,4,308.25
+ndvi_bloomington_patch_6.png,Bloomington,101_201,Independent Test,True,Intermediate (15-35%),15.44952392578125,33,2531.25
+ndvi_cupertino_patch_0.png,Cupertino,106_010,Training,False,Intermediate (15-35%),19.1070556640625,69,3130.5
+ndvi_cupertino_patch_1.png,Cupertino,106_010,Training,False,Low Canopy (<15%),2.95562744140625,2,484.25
+ndvi_cupertino_patch_106.png,Cupertino,106_010,Training,False,Low Canopy (<15%),9.66033935546875,14,1582.75
+ndvi_cupertino_patch_109.png,Cupertino,106_010,Training,False,Low Canopy (<15%),1.45263671875,14,238.0
+ndvi_cupertino_patch_123.png,Cupertino,106_010,Training,False,Low Canopy (<15%),1.336669921875,6,219.0
+ndvi_cupertino_patch_144.png,Cupertino,106_010,Training,False,Low Canopy (<15%),1.11083984375,15,182.0
+ndvi_cupertino_patch_145.png,Cupertino,106_010,Training,False,Intermediate (15-35%),17.2607421875,46,2828.0
+ndvi_cupertino_patch_180.png,Cupertino,106_010,Training,False,Low Canopy (<15%),7.2662353515625,21,1190.5
+ndvi_cupertino_patch_183.png,Cupertino,106_010,Training,False,Low Canopy (<15%),9.8114013671875,85,1607.5
+ndvi_cupertino_patch_195.png,Cupertino,106_010,Training,False,Low Canopy (<15%),1.45111083984375,14,237.75
+ndvi_cupertino_patch_196.png,Cupertino,106_010,Training,False,Low Canopy (<15%),4.10614013671875,10,672.75
+ndvi_cupertino_patch_2.png,Cupertino,106_010,Training,False,Low Canopy (<15%),14.92767333984375,37,2445.75
+ndvi_cupertino_patch_233.png,Cupertino,106_010,Training,False,Low Canopy (<15%),1.9134521484375,37,313.5
+ndvi_cupertino_patch_234.png,Cupertino,106_010,Training,False,Low Canopy (<15%),2.5665283203125,5,420.5
+ndvi_cupertino_patch_235.png,Cupertino,106_010,Training,False,Low Canopy (<15%),8.59375,70,1408.0
+ndvi_cupertino_patch_254.png,Cupertino,106_010,Training,False,Low Canopy (<15%),9.31243896484375,82,1525.75
+ndvi_cupertino_patch_256.png,Cupertino,106_010,Training,False,Low Canopy (<15%),8.6578369140625,46,1418.5
+ndvi_cupertino_patch_259.png,Cupertino,106_010,Training,False,Low Canopy (<15%),13.74053955078125,17,2251.25
+ndvi_cupertino_patch_260.png,Cupertino,106_010,Training,False,Intermediate (15-35%),15.0238037109375,77,2461.5
+ndvi_cupertino_patch_285.png,Cupertino,106_010,Training,False,Low Canopy (<15%),1.1138916015625,12,182.5
+ndvi_cupertino_patch_289.png,Cupertino,106_010,Training,False,Low Canopy (<15%),3.45458984375,16,566.0
+ndvi_cupertino_patch_304.png,Cupertino,106_010,Training,False,Low Canopy (<15%),9.91363525390625,56,1624.25
+ndvi_cupertino_patch_34.png,Cupertino,106_010,Training,False,Low Canopy (<15%),12.4786376953125,31,2044.5
+ndvi_cupertino_patch_364.png,Cupertino,106_010,Training,False,Low Canopy (<15%),11.78436279296875,101,1930.75
+ndvi_cupertino_patch_388.png,Cupertino,106_010,Training,False,Low Canopy (<15%),3.9306640625,27,644.0
+ndvi_cupertino_patch_4.png,Cupertino,106_010,Training,False,Low Canopy (<15%),5.99365234375,7,982.0
+ndvi_cupertino_patch_403.png,Cupertino,106_010,Training,False,Low Canopy (<15%),2.5238037109375,32,413.5
+ndvi_cupertino_patch_404.png,Cupertino,106_010,Training,False,Low Canopy (<15%),9.283447265625,55,1521.0
+ndvi_cupertino_patch_415.png,Cupertino,106_010,Training,False,Low Canopy (<15%),3.00140380859375,9,491.75
+ndvi_cupertino_patch_416.png,Cupertino,106_010,Training,False,Low Canopy (<15%),2.9449462890625,26,482.5
+ndvi_cupertino_patch_453.png,Cupertino,106_010,Training,False,Low Canopy (<15%),3.04412841796875,7,498.75
+ndvi_cupertino_patch_46.png,Cupertino,106_010,Training,False,Low Canopy (<15%),12.0849609375,75,1980.0
+ndvi_cupertino_patch_5.png,Cupertino,106_010,Training,False,Low Canopy (<15%),1.40228271484375,10,229.75
+ndvi_cupertino_patch_63.png,Cupertino,106_010,Training,False,Low Canopy (<15%),12.6068115234375,66,2065.5
+ndvi_cupertino_patch_80.png,Cupertino,106_010,Training,False,Low Canopy (<15%),4.24652099609375,12,695.75
+ndvi_cupertino_patch_81.png,Cupertino,106_010,Training,False,Low Canopy (<15%),12.0086669921875,26,1967.5
+ndvi_cupertino_patch_84.png,Cupertino,106_010,Training,False,Low Canopy (<15%),3.8604736328125,13,632.5
+ndvi_cupertino_patch_85.png,Cupertino,106_010,Training,False,Low Canopy (<15%),2.2369384765625,19,366.5
+ndvi_cupertino_patch_86.png,Cupertino,106_010,Training,False,Low Canopy (<15%),5.377197265625,30,881.0
+ndvi_cupertino_patch_98.png,Cupertino,106_010,Training,False,Low Canopy (<15%),4.89501953125,19,802.0
+ndvi_surrey_patch_115.png,Surrey,185_028,Validation,False,Low Canopy (<15%),9.912109375,56,1624.0
+ndvi_surrey_patch_116.png,Surrey,185_028,Validation,False,Low Canopy (<15%),1.7333984375,12,284.0
+ndvi_surrey_patch_118.png,Surrey,185_028,Validation,False,Low Canopy (<15%),5.23223876953125,35,857.25
+ndvi_surrey_patch_133.png,Surrey,185_028,Validation,False,Low Canopy (<15%),3.05328369140625,18,500.25
+ndvi_surrey_patch_137.png,Surrey,185_028,Validation,False,Low Canopy (<15%),5.23681640625,29,858.0
+ndvi_surrey_patch_160.png,Surrey,185_028,Validation,False,Low Canopy (<15%),3.59649658203125,40,589.25
+ndvi_surrey_patch_169.png,Surrey,185_028,Validation,False,Low Canopy (<15%),12.2528076171875,66,2007.5
+ndvi_surrey_patch_171.png,Surrey,185_028,Validation,False,Low Canopy (<15%),0.52947998046875,5,86.75
+ndvi_surrey_patch_174.png,Surrey,185_028,Validation,False,Low Canopy (<15%),7.46917724609375,103,1223.75
+ndvi_surrey_patch_20.png,Surrey,185_028,Validation,False,Low Canopy (<15%),10.91766357421875,48,1788.75
+ndvi_surrey_patch_200.png,Surrey,185_028,Validation,False,Low Canopy (<15%),2.7496337890625,13,450.5
+ndvi_surrey_patch_243.png,Surrey,185_028,Validation,False,Low Canopy (<15%),7.2540283203125,39,1188.5
+ndvi_surrey_patch_244.png,Surrey,185_028,Validation,False,Low Canopy (<15%),1.38397216796875,14,226.75
+ndvi_surrey_patch_246.png,Surrey,185_028,Validation,False,Low Canopy (<15%),3.25775146484375,20,533.75
+ndvi_surrey_patch_270.png,Surrey,185_028,Validation,False,Low Canopy (<15%),9.35211181640625,76,1532.25
+ndvi_surrey_patch_295.png,Surrey,185_028,Validation,False,Low Canopy (<15%),3.16925048828125,26,519.25
+ndvi_surrey_patch_296.png,Surrey,185_028,Validation,False,Low Canopy (<15%),1.751708984375,27,287.0
+ndvi_surrey_patch_306.png,Surrey,185_028,Validation,False,Low Canopy (<15%),5.206298828125,53,853.0
+ndvi_surrey_patch_337.png,Surrey,185_028,Validation,False,Low Canopy (<15%),0.86212158203125,13,141.25
+ndvi_surrey_patch_355.png,Surrey,185_028,Validation,False,Low Canopy (<15%),8.82415771484375,68,1445.75
+ndvi_surrey_patch_357.png,Surrey,185_028,Validation,False,Low Canopy (<15%),6.28662109375,53,1030.0
+ndvi_surrey_patch_400.png,Surrey,185_028,Validation,False,Low Canopy (<15%),11.39068603515625,65,1866.25
+ndvi_surrey_patch_41.png,Surrey,185_028,Validation,False,Low Canopy (<15%),0.9918212890625,11,162.5
+ndvi_surrey_patch_424.png,Surrey,185_028,Validation,False,Low Canopy (<15%),12.2283935546875,110,2003.5
+ndvi_surrey_patch_425.png,Surrey,185_028,Validation,False,Low Canopy (<15%),2.8717041015625,7,470.5
+ndvi_surrey_patch_446.png,Surrey,185_028,Validation,False,Low Canopy (<15%),1.73797607421875,18,284.75
+ndvi_surrey_patch_448.png,Surrey,185_028,Validation,False,Low Canopy (<15%),2.57568359375,27,422.0
+ndvi_surrey_patch_449.png,Surrey,185_028,Validation,False,Low Canopy (<15%),1.06048583984375,11,173.75
+ndvi_surrey_patch_459.png,Surrey,185_028,Validation,False,Low Canopy (<15%),5.5816650390625,38,914.5
+ndvi_surrey_patch_57.png,Surrey,185_028,Validation,False,Low Canopy (<15%),2.23541259765625,19,366.25
+ndvi_surrey_patch_7.png,Surrey,185_028,Validation,False,Intermediate (15-35%),28.729248046875,70,4707.0
+ndvi_surrey_patch_8.png,Surrey,185_028,Validation,False,Low Canopy (<15%),10.04180908203125,45,1645.25
+ndvi_surrey_patch_9.png,Surrey,185_028,Validation,False,Low Canopy (<15%),3.5919189453125,25,588.5
