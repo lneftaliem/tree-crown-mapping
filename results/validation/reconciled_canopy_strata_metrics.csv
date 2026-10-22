@@ -1,0 +1,4 @@
+Canopy_Stratum,Patches_N,Reference_Crowns,Predicted_Crowns_Filtered,Object_Precision_IoU05,Object_Recall_IoU05,Object_F1_IoU05,Crown_Merging_Rate,Crown_Splitting_Rate
+Low Canopy (<15%),100,3582,3284,17.9%,16.4%,0.172,48.1%,1.2%
+Intermediate Canopy (15-35%),13,918,508,29.5%,16.3%,0.210,51.9%,3.8%
+Closed Canopy (>=35%),0,0,0,N/A,N/A,N/A,N/A,N/A

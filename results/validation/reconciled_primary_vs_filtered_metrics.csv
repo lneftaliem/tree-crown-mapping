@@ -1,0 +1,20 @@
+Metric_Category,Metric_Name,Primary_Production_Unfiltered,Sensitivity_Filtered_10px,Underlying_Counts_Unfiltered,Underlying_Counts_Filtered
+Configuration,Pipeline Specification,"tau=0.30, 4-connected, min_area=1px (0.25 m2)","tau=0.30, 4-connected, min_area=10px (2.5 m2)","113 curated city patches, 1px threshold","113 curated city patches, 10px threshold"
+Object Denominators,Reference Crowns (GT),"4,500","4,500","N_ref=4,500 polygons (min_area>=10px)","N_ref=4,500 polygons (min_area>=10px)"
+Object Denominators,Predicted Components (Model),"8,925","4,138","N_pred=8,925 components (includes 2,228 1-px noise dots)","N_pred=4,138 components (>=10px)"
+Object Matching (IoU>=0.3),True Positive Matches (IoU>=0.3),"1,398","1,390","TP=1,398 matches","TP=1,390 matches"
+Object Matching (IoU>=0.3),Object Precision (IoU>=0.3),15.66%,33.59%,"TP=1,398 / N_pred=8,925","TP=1,390 / N_pred=4,138"
+Object Matching (IoU>=0.3),Object Recall (IoU>=0.3),31.07%,30.89%,"TP=1,398 / N_ref=4,500","TP=1,390 / N_ref=4,500"
+Object Matching (IoU>=0.3),Object F1-Score (IoU>=0.3),0.2082,0.3218,Harmonic mean of precision & recall,Harmonic mean of precision & recall
+Object Matching (IoU>=0.5),True Positive Matches (IoU>=0.5),875,870,TP=875 matches,TP=870 matches
+Object Matching (IoU>=0.5),Object Precision (IoU>=0.5),9.80%,21.02%,"TP=875 / N_pred=8,925","TP=870 / N_pred=4,138"
+Object Matching (IoU>=0.5),Object Recall (IoU>=0.5),19.44%,19.33%,"TP=875 / N_ref=4,500","TP=870 / N_ref=4,500"
+Object Matching (IoU>=0.5),Object F1-Score (IoU>=0.5),0.1304,0.2014,Harmonic mean of precision & recall,Harmonic mean of precision & recall
+Topology & Merging,Crown Merging Rate (% Ref Merged),54.80%,48.89%,"2,466 merged / 4,500 ref crowns (min_overlap=1px)","2,200 merged / 4,500 ref crowns (min_overlap=10px)"
+Topology & Merging,Crown Splitting Rate (% Ref Split),1.71%,1.71%,"77 split / 4,500 ref crowns","77 split / 4,500 ref crowns"
+Pixel-Level Performance,Pixel Accuracy (tau=0.30),92.83%,92.83%,"TP=456,812, TN=6,154,311, FP=593,211, FN=201,234 (Total=7,405,568)","TP=456,812, TN=6,154,311, FP=593,211, FN=201,234 (Total=7,405,568)"
+Pixel-Level Performance,Pixel Precision (tau=0.30),43.51%,43.51%,"TP=456,812 / (TP+FP=1,050,023)","TP=456,812 / (TP+FP=1,050,023)"
+Pixel-Level Performance,Pixel Recall / Sensitivity (tau=0.30),69.42%,69.42%,"TP=456,812 / (TP+FN=658,046)","TP=456,812 / (TP+FN=658,046)"
+Pixel-Level Performance,Pixel Specificity (tau=0.30),94.85%,94.85%,"TN=6,154,311 / (TN+FP=6,747,522)","TN=6,154,311 / (TN+FP=6,747,522)"
+Pixel-Level Performance,Pixel Dice Coefficient (tau=0.30),0.5350,0.5350,"2*TP=913,624 / (2*TP+FP+FN=1,708,069)","2*TP=913,624 / (2*TP+FP+FN=1,708,069)"
+Pixel-Level Performance,Pixel IoU (tau=0.30),0.3652,0.3652,"TP=456,812 / (TP+FP+FN=1,251,257)","TP=456,812 / (TP+FP+FN=1,251,257)"

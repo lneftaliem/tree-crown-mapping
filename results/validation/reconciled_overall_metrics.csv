@@ -1,0 +1,31 @@
+Metric,Denominators_and_Method,Value
+Evaluation Image Count,Curated City Patches (Excluding patch_area_344),113 patches
+Total Evaluated Pixels,113 patches x 256 x 256 pixels,"7,405,568 pixels"
+Reference Crowns (GT),Individual Polygon Annotations (min_area>=10 px),"4,500 crowns"
+"Predicted Components (Production Filtered, tau=0.5, CC=2, min=10px)",Audited Filtered Production Setting,"3,792 components"
+"Predicted Components (Production Unfiltered, tau=0.3, CC=1, min=1px)",Literal Unfiltered Production Setting,"8,925 components"
+"Primary Object Precision (IoU>=0.3, Filtered)","TP=1,524 / Pred=3,792 (Micro-averaged)",40.19%
+"Primary Object Recall (IoU>=0.3, Filtered)","TP=1,524 / Ref=4,500 (Micro-averaged)",33.87%
+"Primary Object F1-Score (IoU>=0.3, Filtered)",Harmonic mean of precision and recall,0.3675
+"Primary Object Precision (IoU>=0.3, Unfiltered)","TP=1,398 / Pred=8,925 (Micro-averaged)",15.66%
+"Primary Object Recall (IoU>=0.3, Unfiltered)","TP=1,398 / Ref=4,500 (Micro-averaged)",31.07%
+"Primary Object F1-Score (IoU>=0.3, Unfiltered)",Harmonic mean of precision and recall,0.2082
+"Secondary Object Precision (IoU>=0.5, Filtered)","TP=739 / Pred=3,792 (Micro-averaged)",19.49%
+"Secondary Object Recall (IoU>=0.5, Filtered)","TP=739 / Ref=4,500 (Micro-averaged)",16.42%
+"Secondary Object F1-Score (IoU>=0.5, Filtered)",Harmonic mean of precision and recall,0.1782
+Mean Matched Crown IoU,Mean IoU across matched pairs,0.5154
+Macro-Averaged F1 (Patch Mean +/- SD),Mean and std of per-patch F1 (IoU>=0.5),0.1539 +/- 0.1410
+Crown Merging Rate (% Ref Merged),"2,200 merged crowns / 4,500 total ref crowns","48.89% (2,200 crowns)"
+Crown Splitting Rate (% Ref Split),"77 split crowns / 4,500 total ref crowns",1.71% (77 crowns)
+Pixel Accuracy (Production tau=0.3),"(TP+TN) / 7,405,568 pixels",92.83%
+Pixel Recall / Sensitivity (Production tau=0.3),TP / (TP+FN) canopy pixels,69.42%
+Pixel Precision (Production tau=0.3),TP / (TP+FP) canopy pixels,43.51%
+Pixel Specificity (Production tau=0.3),TN / (TN+FP) non-canopy pixels,94.85%
+Pixel Dice / F1 (Production tau=0.3),2*TP / (2*TP + FP + FN),0.5350
+Pixel IoU / Jaccard (Production tau=0.3),TP / (TP + FP + FN),0.3652
+Pixel Accuracy (Sensitivity tau=0.7),"(TP+TN) / 7,405,568 pixels",93.95%
+Pixel Recall / Sensitivity (Sensitivity tau=0.7),TP / (TP+FN) canopy pixels,61.80%
+Pixel Precision (Sensitivity tau=0.7),TP / (TP+FP) canopy pixels,49.52%
+Pixel Specificity (Sensitivity tau=0.7),TN / (TN+FP) non-canopy pixels,95.99%
+Pixel Dice / F1 (Sensitivity tau=0.7),2*TP / (2*TP + FP + FN),0.5498
+Pixel IoU / Jaccard (Sensitivity tau=0.7),TP / (TP + FP + FN),0.3792
