@@ -152,7 +152,7 @@ def _get_tile_bounds_cached(cutouts_dir, pred_file):
 # ============================================================================
 
 
-# PLACEHOLDER — keep the rest of the file below intact
+# PLACEHOLDER - keep the rest of the file below intact
 
 # ============================================================================
 # TREE DETECTION ANALYSIS
@@ -466,7 +466,7 @@ def analyze_predictions(cutouts_dir, tile_size_meters=50, filter_by_boundaries=T
         for item in tile_list:
             tile_info_lookup[item['filename']] = (city_boundaries.get(item['city']), item['geometry'].bounds)
     
-    # Initialize stats — also collect canopy pixel counts so that
+    # Initialize stats - also collect canopy pixel counts so that
     # calculate_urban_canopy_cover() can reuse them (avoids a full second
     # pass over every prediction tile).
     city_stats = {city: {'num_images': 0, 'total_trees': 0, 'files': [],
@@ -482,7 +482,7 @@ def analyze_predictions(cutouts_dir, tile_size_meters=50, filter_by_boundaries=T
     def _analyze_one(pred_file, boundary=None, bounds=None):
         """Return (pred_file, city, num_trees, tree_pixels, total_pixels) or None."""
         pred_lower = pred_file.lower()
-        # 1. Try tile_metadata.csv lookup first (authoritative — works for all cities
+        # 1. Try tile_metadata.csv lookup first (authoritative - works for all cities
         #    regardless of whether the city name appears in the filename)
         meta_row = _TILE_META_LOOKUP.get(pred_file)
         city = meta_row.city.lower() if (meta_row is not None and hasattr(meta_row, 'city')) else None
@@ -530,7 +530,7 @@ def analyze_predictions(cutouts_dir, tile_size_meters=50, filter_by_boundaries=T
                     total_pixels = int(mask.sum())
             else:
                 if boundary is None and bounds is not None:
-                    # Tile passed city-name match but has no resolved boundary —
+                    # Tile passed city-name match but has no resolved boundary -
                     # skip to avoid inflating count with unclipped tiles.
                     return None
                 _, num_trees = measure.label(binary, return_num=True, connectivity=1)
@@ -550,7 +550,7 @@ def analyze_predictions(cutouts_dir, tile_size_meters=50, filter_by_boundaries=T
         ) for pf in tqdm(pred_files, desc="Analyzing predictions")
     )
 
-    # Aggregate results (single-threaded — fast dict updates)
+    # Aggregate results (single-threaded - fast dict updates)
     for r in par_results:
         if r is None:
             continue
@@ -658,7 +658,7 @@ def generate_nature_summary_table(cutouts_dir, city_stats=None):
         print(f"    ✓ {city.title()}: {total_trees:,} trees analyzed for table.")
 
     if not table_rows:
-        print("  No data found for table — skipping.")
+        print("  No data found for table - skipping.")
         return
 
     # Add Summary Row
@@ -1141,7 +1141,7 @@ if __name__ == "__main__":
     if 'city_stats' in locals():
         canopy_dict = calculate_urban_canopy_cover(cutouts_dir, city_stats, threshold=0.3)
     else:
-        print("  ⚠ city_stats not available — run analyze_predictions first")
+        print("  ⚠ city_stats not available - run analyze_predictions first")
         canopy_dict = {}
 
     print(f"\n3. Building combined table...")
@@ -1506,7 +1506,7 @@ CITY_LIMITS_PATHS = {
 # Census "Incorporated Places" for correct city boundaries (avoids jagged block-group union).
 # Download TIGER Place shapefiles: https://www2.census.gov/geo/tiger/TIGER2023/PLACE/
 # e.g. tl_2023_48_place.zip (Texas), tl_2023_06_place.zip (California). Extract to census_boundaries/.
-# Format: (path_to_place.shp, name_filter) — filter by NAME column containing this string.
+# Format: (path_to_place.shp, name_filter) - filter by NAME column containing this string.
 # Census place boundaries - use BASE_DIR with fallbacks
 CENSUS_PLACE_BOUNDARIES = {
     'austin': (os.path.join(BASE_DIR, 'census_boundaries', 'tl_2023_48_place', 'tl_2023_48_place.shp'), 'Austin'),      # Texas
@@ -1560,7 +1560,7 @@ def _load_place_boundary_uncached(city_lower, bbox_4326=None):
                 print(f"    Sample CSD names: {nearby}")
                 return None
             if len(matched) > 1:
-                # Multiple matches — use the one with CSDUID starting with '5915' (Surrey)
+                # Multiple matches - use the one with CSDUID starting with '5915' (Surrey)
                 surrey_match = matched[matched['CSDUID'].astype(str).str.startswith('5915')]
                 if len(surrey_match) > 0:
                     matched = surrey_match.head(1)
@@ -1577,7 +1577,7 @@ def _load_place_boundary_uncached(city_lower, bbox_4326=None):
         if len(gdf) == 0:
             return None
         # If CSD data was matched (Canadian shapefile), return boundary now
-        # — do NOT fall through to the US TIGER path which lacks CSDNAME handling
+        # - do NOT fall through to the US TIGER path which lacks CSDNAME handling
         if 'CSDNAME' in gdf.columns:
             boundary = unary_union(gdf.geometry.dropna())
             if boundary and not boundary.is_empty:
@@ -1802,7 +1802,7 @@ def visualize_city_density_maps_geographic(cutouts_dir, cities, tile_metadata_pa
                 traceback.print_exc()
                 
         if census_gdf is None or len(census_gdf) == 0:
-            print(f"  No census boundaries loaded for {city} — skipping")
+            print(f"  No census boundaries loaded for {city} - skipping")
             continue
             
         county_bounds = census_gdf.total_bounds
@@ -2840,7 +2840,7 @@ def plot_crown_area_histogram():
     n_bins = 31
     bins = np.logspace(0, 3, n_bins)
 
-    # 4-panel figure (2x2) — figsize matched to income/density scatter
+    # 4-panel figure (2x2) - figsize matched to income/density scatter
     fig, axes = plt.subplots(2, 2, figsize=(7.2, 5.2), sharex=True)
     axes_flat = axes.flatten()
 
@@ -2940,11 +2940,11 @@ def visualize_crown_delineation(cutouts_dir, city, n_tiles=None, min_trees=5):
                 pred_img = pred_img / 255.0
             pred_img = ensure_size(pred_img)
             
-            # Check for mostly black/empty image (hard reject — nothing to show)
+            # Check for mostly black/empty image (hard reject - nothing to show)
             if pred_img.max() < 0.01 or pred_img.std() < 0.02:
                 return False, 0, 0, {}
 
-            # ── LOAD CONFIDENCE MAP (optional — neutral score if missing) ──
+            # ── LOAD CONFIDENCE MAP (optional - neutral score if missing) ──
             conf_file = pred_file.replace('.tif', '_confidence.tif')
             conf_path = os.path.join(cutouts_dir, conf_file)
             conf_img = None
@@ -3016,7 +3016,7 @@ def visualize_crown_delineation(cutouts_dir, city, n_tiles=None, min_trees=5):
                 circularity = min(1.0, 4 * np.pi * area / (perimeter ** 2))
                 shape_scores.append(solidity * 0.6 + circularity * 0.4)
                 
-                # Per-crown confidence (soft — never skip the tree)
+                # Per-crown confidence (soft - never skip the tree)
                 if conf_img is not None:
                     region_mask = (labeled == region.label)
                     region_conf = float(conf_img[region_mask].mean()) if region_mask.sum() > 0 else 0.5
@@ -3083,7 +3083,7 @@ def visualize_crown_delineation(cutouts_dir, city, n_tiles=None, min_trees=5):
                 nn_score = min(1.0, mean_nn / 30.0)
                 spacing_score = quadrant_coverage * 0.6 + nn_score * 0.4
             
-            # NDVI-prediction overlap (soft — neutral if unavailable)
+            # NDVI-prediction overlap (soft - neutral if unavailable)
             ndvi_overlap_score = 0.5
             try:
                 base_for_ndvi = pred_file.replace('pred_pan_', '').replace('pred_ndvi_', '').replace('.tif', '')
@@ -3344,7 +3344,7 @@ def visualize_crown_delineation(cutouts_dir, city, n_tiles=None, min_trees=5):
     def _load_ndvi(base_name, pred_binary=None):
         """Return (ndvi_float32_in_-1_to_1, path) or (None, None).
 
-        Simplified pipeline — guarantees vegetation = GREEN on RdYlGn:
+        Simplified pipeline - guarantees vegetation = GREEN on RdYlGn:
           1. Load raw raster.
           2. If values span a plausible NDVI range (contain negatives or
              are in [-1, 1]), use them directly; otherwise percentile-
@@ -3382,7 +3382,7 @@ def visualize_crown_delineation(cutouts_dir, city, n_tiles=None, min_trees=5):
                 img = (raw / 127.5) - 1.0
                 img = np.clip(img, -1.0, 1.0)
             else:
-                # Unknown encoding — percentile stretch to [-1, +1]
+                # Unknown encoding - percentile stretch to [-1, +1]
                 p2, p98 = np.percentile(raw, [2, 98])
                 if p98 - p2 > 1e-6:
                     img = 2.0 * (raw - p2) / (p98 - p2) - 1.0
@@ -3735,12 +3735,12 @@ else:
 
 
 # ============================================================================
-# CROWN DELINEATION — ONE TILE PER CITY (Publication Figure)
+# CROWN DELINEATION - ONE TILE PER CITY (Publication Figure)
 # ============================================================================
 # 3-panel Nature-quality figure per city:
-#   Panel 1 — PAN + green crown outlines (filtered by NDVI overlap ≥ 0.5)
-#   Panel 2 — NDVI map (RdYlGn, colorbar)
-#   Panel 3 — Confidence heatmap on PAN (plasma, colorbar)
+#   Panel 1 - PAN + green crown outlines (filtered by NDVI overlap ≥ 0.5)
+#   Panel 2 - NDVI map (RdYlGn, colorbar)
+#   Panel 3 - Confidence heatmap on PAN (plasma, colorbar)
 # ============================================================================
 
 def select_best_tile(tile_scores, city_center=None, min_trees=10, top_n=1):
@@ -3973,7 +3973,7 @@ def visualize_crown_tiles_per_city(cutouts_dir, cities, min_trees=5):
 
     # ── Tile scorer for select_best_tile ──────────────────────────────────
     def _score_for_selection(pred_file):
-        """Return dict with file, n_crowns, mean_ndvi, centroid — or None on failure."""
+        """Return dict with file, n_crowns, mean_ndvi, centroid - or None on failure."""
         try:
             with rasterio.open(os.path.join(cutouts_dir, pred_file)) as src:
                 pred_img = src.read(1).astype(np.float32)
@@ -4150,7 +4150,7 @@ def visualize_crown_tiles_per_city(cutouts_dir, cities, min_trees=5):
             print(f"  {len(pred_files)} tiles within city boundary")
             city_center = (city_boundary.centroid.x, city_boundary.centroid.y)
         else:
-            print(f"  No city boundary — using all {len(pred_files)} tiles")
+            print(f"  No city boundary - using all {len(pred_files)} tiles")
             city_center = None
 
         # 3. Score tiles in parallel
@@ -5012,7 +5012,7 @@ def calculate_tree_density_from_tiles(tile_paths, block_groups_gdf, threshold=0.
     intersection_failures = 0
 
     # ── PHASE 1: Pre-read ALL rasters in parallel (I/O-bound) ────────────
-    # This is the main bottleneck — rasterio opens are serialised by GIL
+    # This is the main bottleneck - rasterio opens are serialised by GIL
     # but release it during the actual read, so ThreadPoolExecutor helps.
     _tile_paths_list = []
     _tile_geoms_list = []
@@ -5572,7 +5572,7 @@ def plot_combined_income_density_scatter(all_equity_data, output_dir=None):
     valid = {k: v for k, v in all_equity_data.items()
              if v is not None and len(v) > 0}
     if len(valid) < 2:
-        print("  Need ≥ 2 cities for combined scatter — skipping")
+        print("  Need ≥ 2 cities for combined scatter - skipping")
         return
 
     # ── Colors & Labels ────────────────────────────────────────────────
@@ -5785,7 +5785,7 @@ def plot_combined_canopy_cover_scatter(all_equity_data, output_dir=None):
     valid = {k: v for k, v in all_equity_data.items()
              if v is not None and len(v) > 0}
     if len(valid) < 1:
-        print("  No valid data for canopy cover scatter — skipping")
+        print("  No valid data for canopy cover scatter - skipping")
         return
 
     # ── Colors & Labels (Identical to density figure) ──────────────────
@@ -5978,7 +5978,7 @@ def plot_combined_canopy_tree_count_scatter(all_equity_data, output_dir=None):
     valid = {k: v for k, v in all_equity_data.items()
              if v is not None and len(v) > 0}
     if len(valid) < 1:
-        print("  No valid data for canopy-tree count scatter — skipping")
+        print("  No valid data for canopy-tree count scatter - skipping")
         return
 
     OI_COLORS = {
@@ -6281,10 +6281,10 @@ def run_city_equity_analysis(city, cutouts_dir=CUTOUTS_DIR):
             print(f"  Filtered census units with CITY_FILTERS['{city}']: "
                   f"{_pre_filter} → {len(census_gdf)}")
         else:
-            print(f"  Warning: CITY_FILTERS column '{col}' not in census_gdf — "
+            print(f"  Warning: CITY_FILTERS column '{col}' not in census_gdf - "
                   f"keeping all {_pre_filter} block groups")
     else:
-        print(f"  No CITY_FILTERS entry for {city} — keeping all {_pre_filter} block groups")
+        print(f"  No CITY_FILTERS entry for {city} - keeping all {_pre_filter} block groups")
     
     if len(census_gdf) == 0:
         print("No census boundaries after city filter")
@@ -6333,7 +6333,7 @@ def run_city_equity_analysis(city, cutouts_dir=CUTOUTS_DIR):
                 fn = os.path.basename(tp)
                 _bnds = None
                 _base_nm = get_base_name(fn)
-                # 1) TILE_METADATA (fast — no file I/O)
+                # 1) TILE_METADATA (fast - no file I/O)
                 for _try_fn in (fn, fn.lower(),
                                 'pred_pan_' + _base_nm + '.tif',
                                 'pred_ndvi_' + _base_nm + '.tif'):
@@ -6391,11 +6391,11 @@ def run_city_equity_analysis(city, cutouts_dir=CUTOUTS_DIR):
                       f"{_before_tiles} → {len(_kept_tiles)}")
             tile_paths = _kept_tiles
     else:
-        # No place boundary — calculate_tree_density_from_tiles with
+        # No place boundary - calculate_tree_density_from_tiles with
         # include_no_coverage=False already excludes census units
         # without tile overlap, giving the same effective set as the
         # density map's tile-coverage clipping.
-        print(f"  No place boundary for {city} — "
+        print(f"  No place boundary for {city} - "
               f"tile-coverage filtering handled by density calculation")
 
     if len(census_gdf) == 0:
@@ -6404,7 +6404,7 @@ def run_city_equity_analysis(city, cutouts_dir=CUTOUTS_DIR):
     
     # Calculate tree density from tiles
     # Use include_no_coverage=False so only block groups with actual tile
-    # overlap are included — this matches the density map's "with coverage"
+    # overlap are included - this matches the density map's "with coverage"
     # set and keeps the census-unit universe identical across graphics.
     geo_unit_name = 'dissemination areas' if country == 'CA' else 'block groups'
 
@@ -6563,7 +6563,7 @@ def run_city_equity_analysis(city, cutouts_dir=CUTOUTS_DIR):
         if len(tree_df) > 0:
             print(f"  Debug: Tree DF GEOID sample: {tree_df['GEOID'].head(3).tolist()}")
     
-    # Run equity analysis directly — bypassing additional dataframe merging!
+    # Run equity analysis directly - bypassing additional dataframe merging!
     merged_df, results = analyze_tree_income_equity(tree_df, None)
     
     if results:
@@ -6598,7 +6598,7 @@ def run_city_equity_analysis(city, cutouts_dir=CUTOUTS_DIR):
         merged_df.to_csv(os.path.join(equity_out_dir, f'{city}_equity_data.csv'), index=False)
         print(f"Saved: {equity_out_dir}/{city}_equity_data.csv")
     else:
-        print(f"  ⚠ No equity results for {city} — check tree density data")
+        print(f"  ⚠ No equity results for {city} - check tree density data")
     
     return merged_df, results
 
@@ -7000,7 +7000,7 @@ if __name__ == "__main__":
     if os.path.exists(CUTOUTS_DIR):
         visualize_city_density_maps_geographic(CUTOUTS_DIR, known_cities)
     else:
-        print(f"Warning: Directory '{CUTOUTS_DIR}' not found — skipping density maps")
+        print(f"Warning: Directory '{CUTOUTS_DIR}' not found - skipping density maps")
 
     # ========================================================================
     # 3. RUN EQUITY ANALYSIS

@@ -26,6 +26,21 @@ archives and decompressing every city, so the figure scripts run unchanged.
 
 The staging is idempotent: files already present at the destination are left
 untouched, so re-running is cheap and never clobbers existing outputs.
+
+Census-unit covariate tables (``data/covariates/``) and the Austin HOLC
+polygons (``data/redlining/``) are staged the same way, into
+``$TREE_MAPPING_BASE_DIR/analysis_output/equity_results/`` and
+``$TREE_MAPPING_BASE_DIR/redlining_data/``.
+
+Latitude-corrected crown areas
+==============================
+The ``*_corrected`` point datasets used by the revision analyses are a pure,
+deterministic function of the committed point data: each tree's pixel count is
+multiplied by the true ground area of one image pixel at that tree's latitude
+(see :func:`apply_crown_area_correction`). They are therefore not committed;
+:func:`load_corrected_points` rebuilds them on the fly from the committed
+files, and ``run_crown_area_correction_pipeline.py --write-points`` writes
+them to ``analysis_output/ripley_data_corrected/`` if you want them on disk.
 """
 
 import os
@@ -140,6 +155,108 @@ def stage_all(cities=CITIES, points=True, boundaries=True, force=False):
             ensure_city_points(city, force=force)
 
 
+# ── Covariate tables, redlining polygons, corrected crown areas ──────────────
+
+COMMITTED_COVARIATES_DIR = os.path.join(REPO_DIR, "data", "covariates")
+COMMITTED_REDLINING_DIR = os.path.join(REPO_DIR, "data", "redlining")
+EQUITY_STAGE_DIR = os.path.join(BASE_DIR, "analysis_output", "equity_results")
+CORRECTED_STAGE_DIR = os.path.join(BASE_DIR, "analysis_output", "ripley_data_corrected")
+REDLINING_STAGE_DIR = os.path.join(BASE_DIR, "redlining_data")
+
+CORRECTED_POINTS_STEM = "{city}_ripley_points_with_income_corrected.geojson"
+
+# Native image pixel size in degrees for each city's mosaic (from tile_metadata.csv).
+DEG_PER_PX = {
+    "austin":      4.8827495976e-06,
+    "bloomington": 5.0595793518e-06,
+    "cupertino":   5.4267546470e-06,
+    "surrey":      6.3230653393e-06,
+}
+# Square metres per square degree at the equator (111.32 km per degree)^2.
+M2_PER_DEG2 = 111320.0 ** 2
+
+
+def _copy_tree(src_dir, dst_dir, force=False):
+    """Copy every file in ``src_dir`` into ``dst_dir`` without overwriting."""
+    out = []
+    if not os.path.isdir(src_dir):
+        print(f"[repro_data] WARNING: committed directory missing: {src_dir}")
+        return out
+    os.makedirs(dst_dir, exist_ok=True)
+    for fname in sorted(os.listdir(src_dir)):
+        src = os.path.join(src_dir, fname)
+        dst = os.path.join(dst_dir, fname)
+        if not os.path.isfile(src):
+            continue
+        if force or not os.path.exists(dst):
+            shutil.copyfile(src, dst)
+        out.append(dst)
+    return out
+
+
+def stage_covariates(force=False):
+    """Stage the committed census-unit covariate tables into
+    ``analysis_output/equity_results/``."""
+    return _copy_tree(COMMITTED_COVARIATES_DIR, EQUITY_STAGE_DIR, force=force)
+
+
+def stage_redlining(force=False):
+    """Stage the committed Austin HOLC polygons into ``redlining_data/``."""
+    return _copy_tree(COMMITTED_REDLINING_DIR, REDLINING_STAGE_DIR, force=force)
+
+
+def apply_crown_area_correction(df, city):
+    """Add ``pixel_area_m2`` and ``crown_area_m2`` columns to a tree table.
+
+    ``pixel_area_m2 = DEG_PER_PX[city]^2 * 111320^2 * cos(latitude)`` is the
+    ground area of one image pixel at each tree's latitude, and
+    ``crown_area_m2 = crown_area_px * pixel_area_m2``. ``df`` needs
+    ``latitude`` and ``crown_area_px`` columns. Returns ``df`` (modified in place).
+    """
+    import numpy as np
+
+    city = city.lower()
+    lat_rad = np.radians(df["latitude"].to_numpy(dtype=float))
+    df["pixel_area_m2"] = (DEG_PER_PX[city] ** 2) * M2_PER_DEG2 * np.cos(lat_rad)
+    df["crown_area_m2"] = df["crown_area_px"] * df["pixel_area_m2"]
+    return df
+
+
+def load_corrected_points(city, columns=None, bbox=None):
+    """Return the latitude-corrected tree points for ``city`` as a GeoDataFrame.
+
+    Uses ``analysis_output/ripley_data_corrected/<city>_..._corrected.geojson``
+    if it already exists; otherwise stages the committed point data and applies
+    :func:`apply_crown_area_correction` in memory. ``columns`` and ``bbox`` are
+    passed to ``pyogrio.read_dataframe`` so large cities can be read partially.
+    Columns produced by the correction (``crown_area_m2``, ``pixel_area_m2``)
+    may be requested even when reading the uncorrected source.
+    """
+    import pyogrio
+
+    city = city.lower()
+    corrected = os.path.join(CORRECTED_STAGE_DIR, CORRECTED_POINTS_STEM.format(city=city))
+    if os.path.exists(corrected):
+        return pyogrio.read_dataframe(corrected, columns=columns, bbox=bbox)
+
+    src = ensure_city_points(city)
+    if src is None:
+        raise FileNotFoundError(f"No committed point data for {city}")
+    derived = {"crown_area_m2", "pixel_area_m2"}
+    read_cols = None
+    if columns is not None:
+        read_cols = [c for c in columns if c not in derived]
+        for need in ("latitude", "crown_area_px"):
+            if need not in read_cols:
+                read_cols.append(need)
+    gdf = pyogrio.read_dataframe(src, columns=read_cols, bbox=bbox)
+    apply_crown_area_correction(gdf, city)
+    if columns is not None:
+        keep = list(columns) + (["geometry"] if "geometry" in gdf.columns else [])
+        gdf = gdf[[c for c in keep if c in gdf.columns]]
+    return gdf
+
+
 if __name__ == "__main__":
     import argparse
 
@@ -153,6 +270,10 @@ if __name__ == "__main__":
 
     stage_all(cities=tuple(c.strip().lower() for c in args.cities.split(",") if c.strip()),
               force=args.force)
+    stage_covariates(force=args.force)
+    stage_redlining(force=args.force)
     print("[repro_data] staging complete.")
     print(f"[repro_data]   tree points  -> {RIPLEY_STAGE_DIR}")
     print(f"[repro_data]   boundaries   -> {BOUNDARIES_STAGE_DIR}")
+    print(f"[repro_data]   covariates   -> {EQUITY_STAGE_DIR}")
+    print(f"[repro_data]   redlining    -> {REDLINING_STAGE_DIR}")

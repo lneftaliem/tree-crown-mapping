@@ -161,7 +161,7 @@ def plot_crown_area_histogram():
     n_bins = 31
     bins = np.logspace(0, 3, n_bins)
 
-    # ── 4-panel figure (2x2) — figsize matched to income/density scatter ─
+    # ── 4-panel figure (2x2) - figsize matched to income/density scatter ─
     fig, axes = plt.subplots(2, 2, figsize=(7.2, 5.2), sharex=True, sharey=True)
     axes_flat = axes.flatten()
 

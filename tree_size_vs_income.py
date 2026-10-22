@@ -490,7 +490,7 @@ def run_tree_size_analysis(city, cutouts_dir):
                 p = str(f['prefix'])
                 gdf = gdf[gdf[col].astype(str).str.startswith(p)]
         else:
-            print(f"  Warning: CITY_FILTERS column '{col}' not in census_gdf — keeping all {len(gdf)} units")
+            print(f"  Warning: CITY_FILTERS column '{col}' not in census_gdf - keeping all {len(gdf)} units")
 
     # Clip census units to place boundary (matching density map)
     city_boundary = _load_place_boundary(city)

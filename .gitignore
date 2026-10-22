@@ -8,11 +8,13 @@ __pycache__/
 venv/
 env/
 
-# Data / outputs (large, city-specific — not tracked in git)
+# Data / outputs (large, city-specific - not tracked in git)
 cutouts/
 raw_images/
 temp_data/
 analysis_output/
+census_boundaries/
+redlining_data/
 notebooks/census_boundaries/
 notebooks/income_data/
 notebooks/urbantreedata_2023/
@@ -29,7 +31,7 @@ all_trees/
 *.geojson
 !data/**/*.geojson
 
-# Model weights (too large for plain git — see README for hosting instructions)
+# Model weights (too large for plain git - see README for hosting instructions)
 *.keras
 *.h5
 

@@ -4,10 +4,17 @@ pandas
 scipy
 scikit-image
 statsmodels
+scikit-learn
+
+# Spatial statistics (Austin spatial error models)
+libpysal
+spreg
+esda
 
 # Geospatial
 geopandas
 shapely
+pyogrio
 rasterio
 fiona
 rtree
@@ -18,6 +25,7 @@ tensorflow>=2.10,<2.16
 
 # Imaging / plotting
 matplotlib
+seaborn
 opencv-python-headless
 Pillow
 

@@ -52,7 +52,7 @@ across Austin (TX), Bloomington (IN), Cupertino (CA), and Surrey (BC)
 - **Repository:** https://github.com/lneftaliem/tree-crown-mapping
 - **Paper:** Neftaliem, L., Anderson, C. J., Igel, C., Field, C. B., Jackson, R. B., Small, J., & Tucker, C. J. "Mapping tree crowns across four North American cities." Manuscript submitted for publication.
 - **Demo:** N/A
-- **Weights file:** `trees_20260120-1928_AdaDelta_weightmap_tversky_012_256_final.keras` (~376 MB uncompressed; ~327 MB as the downloadable zip), distributed as a GitHub Release asset — see the repository's [Releases page](https://github.com/lneftaliem/tree-crown-mapping/releases/latest). Note: the manuscript reports the fine-tune used the Adam optimizer; the "AdaDelta" token in the filename is legacy naming inherited from the base framework.
+- **Weights file:** `trees_20260120-1928_AdaDelta_weightmap_tversky_012_256_final.keras` (~376 MB uncompressed; ~327 MB as the downloadable zip), distributed as a GitHub Release asset; see the repository's [Releases page](https://github.com/lneftaliem/tree-crown-mapping/releases/latest). Note: the manuscript reports the fine-tune used the Adam optimizer; the "AdaDelta" token in the filename is legacy naming inherited from the base framework.
 
 ## Uses
 
@@ -81,7 +81,7 @@ Mediterranean (Cupertino), and temperate oceanic (Surrey) climates.
   substantially from the ≈50 cm NDVI+panchromatic training imagery. At 4 m
   (e.g. PlanetScope) small crowns span fewer than two pixels and detection is
   unreliable (Supplementary Note 6).
-- **Species identification, tree health, height, biomass, or carbon estimation** —
+- **Species identification, tree health, height, biomass, or carbon estimation**:
   the model outputs crown extent only.
 - Legal, regulatory, property-boundary, or tax determinations about individual
   parcels or trees.
@@ -135,8 +135,8 @@ python prepare_ripley_data.py         # -> per-tree points (centroid + crown are
 ```
 
 To reproduce the **published figures** from the already-processed per-tree
-datasets committed in the repo — no imagery or weights required — run
-`./reproduce.sh` (see the README).
+datasets committed in the repo (no imagery or weights required), run
+`bash reproduce.sh` (see the README).
 
 ## Training Details
 
@@ -175,7 +175,7 @@ partitioned approximately **80/10/10** into training / validation / test sets.
 
 - **Trained weights file size:** ~376 MB (`.keras`).
 - **Compute:** 3 × NVIDIA A100 SXM4 40 GB GPUs (2 nodes) on the Stanford Sherlock cluster.
-- **Final fine-tuning run:** 00:17:40 wall-clock (≈0.88 A100 GPU-hours) for 100 epochs — Slurm job 13894282, completed 2026-01-20. Iterative development involved additional training runs (cumulative wall-clock on the order of several GPU-hours).
+- **Final fine-tuning run:** 00:17:40 wall-clock (≈0.88 A100 GPU-hours) for 100 epochs (Slurm job 13894282, completed 2026-01-20). Iterative development involved additional training runs (cumulative wall-clock on the order of several GPU-hours).
 
 ## Evaluation
 
@@ -191,14 +191,14 @@ open-data portal.
 #### Factors
 
 Performance is reported city-agnostically at the pixel level; qualitative results
-(Figs. S2–S3) show it varies with canopy density and crown clarity — high on
+(Figs. S2–S3) show it varies with canopy density and crown clarity: high on
 isolated, well-defined crowns (Dice 0.80–0.82) and lower in dense or spectrally
 ambiguous areas (Dice as low as 0.32).
 
 #### Metrics
 
 Pixel-level accuracy, precision, recall, specificity, F1, Dice coefficient, and
-IoU (Jaccard) — complementary overlap and classification measures appropriate
+IoU (Jaccard), complementary overlap and classification measures appropriate
 under strong class imbalance. Object-level agreement is assessed via Spearman
 correlation between model-detected and municipally inventoried counts per census
 unit.
@@ -230,8 +230,8 @@ and in unmanaged green space.
 #### Summary
 
 From a single set of fine-tuned weights (no per-city retraining), the model maps
-≈3.29 million trees across the four cities — Austin ≈1,900,000; Surrey ≈1,220,000;
-Bloomington ≈117,000; Cupertino ≈52,700 — at 93.9% pixel accuracy, with moderate
+≈3.29 million trees across the four cities (Austin ≈1,900,000; Surrey ≈1,220,000;
+Bloomington ≈117,000; Cupertino ≈52,700) at 93.9% pixel accuracy, with moderate
 instance-segmentation overlap (Dice 0.55, IoU 0.379) reflecting the difficulty of
 exact crown-boundary delineation.
 
@@ -245,7 +245,7 @@ Figures below are for the final fine-tuning run that produced the released weigh
 - **Hours used:** 00:17:40 wall-clock ≈ 0.88 A100 GPU-hours.
 - **Cloud Provider:** N/A (on-premise university HPC).
 - **Compute Region:** Stanford, California, USA.
-- **Carbon Emitted:** ≈0.2 kg CO₂e — from Slurm-metered energy of ≈0.87 kWh for the run and a California grid intensity of ~0.24 kg CO₂/kWh; a negligible footprint. Development runs add a few GPU-hours more, still well under ~1 kg CO₂e.
+- **Carbon Emitted:** ≈0.2 kg CO₂e, from Slurm-metered energy of ≈0.87 kWh for the run and a California grid intensity of ~0.24 kg CO₂/kWh; a negligible footprint. Development runs add a few GPU-hours more, still well under ~1 kg CO₂e.
 
 ## Technical Specifications
 
@@ -317,17 +317,17 @@ Neftaliem, L., Anderson, C. J., Igel, C., Field, C. B., Jackson, R. B., Small, J
 
 ## Glossary
 
-- **NDVI** — Normalised Difference Vegetation Index, a red/near-infrared ratio
+- **NDVI**: Normalised Difference Vegetation Index, a red/near-infrared ratio
   that highlights live vegetation.
-- **Panchromatic** — a single high-resolution broadband intensity channel; here
+- **Panchromatic**: a single high-resolution broadband intensity channel; here
   it also carries the cast-shadow cue used to define a tree.
-- **Crown** — the above-ground canopy extent of an individual tree.
-- **Tversky loss** — a generalisation of the Dice loss with tunable
+- **Crown**: the above-ground canopy extent of an individual tree.
+- **Tversky loss**: a generalisation of the Dice loss with tunable
   false-positive/false-negative weighting (here α = 0.11, β = 0.89), useful for
   class-imbalanced segmentation.
-- **Dice / IoU** — overlap metrics between predicted and reference masks; IoU is
+- **Dice / IoU**: overlap metrics between predicted and reference masks; IoU is
   the stricter (Jaccard) measure.
-- **Ripley's L** — a density-independent second-order spatial statistic used to
+- **Ripley's L**: a density-independent second-order spatial statistic used to
   characterise clustering of detected trees.
 
 ## More Information
@@ -343,4 +343,4 @@ co-authors.
 
 ## Model Card Contact
 
-Leona Neftaliem — leonan@stanford.edu (corresponding author).
+Leona Neftaliem, leonan@stanford.edu (corresponding author).
