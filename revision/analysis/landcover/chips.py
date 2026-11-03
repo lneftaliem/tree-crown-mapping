@@ -9,8 +9,9 @@ from rasterio.vrt import WarpedVRT
 from rasterio.enums import Resampling
 from affine import Affine
 
-P = '/path/to/Urban_data/tree_crowns_v1_20261101'
-PGC = '/path/to/Urban_data/NASA:PGC/Training_06062024'
+import os
+P = os.environ.get('URBAN_DATA', '/path/to/Urban_data') + '/tree_crowns_v1_20261101'
+PGC = os.environ.get('URBAN_DATA', '/path/to/Urban_data') + '/NASA:PGC/Training_06062024'
 CITIES = ('austin', 'bloomington', 'cupertino', 'surrey')
 INV = pd.read_csv(f'{P}/work_v1b/tiles/tile_inventory.csv').set_index('filename')
 GEO = pd.read_csv(f'{P}/work_v1b/diag/georef_table.csv').set_index('filename')

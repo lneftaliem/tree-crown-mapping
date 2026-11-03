@@ -32,11 +32,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, 'repo_adapted'))
 import repro_data  # noqa: E402
 
-ROOT = '/path/to/Urban_data'
+ROOT = os.environ.get('URBAN_DATA', '/path/to/Urban_data')
 NONTREE = os.path.join(HERE, 'repo_adapted', 'data', 'covariates_nontree')
 PARK = repro_data.COMMITTED_PARK_CSV
 BND = repro_data.COMMITTED_BOUNDARIES_DIR
 DERIVED = os.path.join(HERE, 'derived')
+SURREY_PARKS = os.environ.get('SURREY_PARKS_DIR', os.path.join(os.path.dirname(os.path.dirname(HERE)), 'data', 'parks', 'surrey'))
 CITIES = ['austin', 'bloomington', 'cupertino', 'surrey']
 UTM = {'austin': 32614, 'bloomington': 32616, 'cupertino': 32610, 'surrey': 32610}
 CBD = {'austin': (621154.36, 3349896.43), 'bloomington': (540282.91, 4335379.26),
@@ -85,7 +86,7 @@ def new_unit_covariates(city, ids):
     out['housing_units'] = dw.reindex(out.index)
     out['housing_density_km2'] = out.housing_units / out.block_area_km2
     out['median_year_built'] = np.nan
-    p = [gpd.read_file(f'{ROOT}/tree_crowns_v1_20261101/provenance/external_downloads/surrey_layer_{L}.geojson').to_crs(32610)
+    p = [gpd.read_file(f'{SURREY_PARKS}/surrey_layer_{L}.geojson').to_crs(32610)
          for L in (256, 245)]
     tot = make_valid(gpd.GeoSeries(list(p[0].geometry) + list(p[1].geometry), crs=32610).union_all())
     nat = make_valid(p[1].geometry.union_all())

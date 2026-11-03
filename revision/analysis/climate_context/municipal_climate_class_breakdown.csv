@@ -1,0 +1,6 @@
+city,total_cells,kg_code,climate_class,description,cell_count,pct_of_municipality
+Austin,1156,14,Cfa,"Temperate, no dry season, hot summer",1156,100.0
+Bloomington,90,25,Dfa,"Cold, no dry season, hot summer",90,100.0
+Cupertino,46,9,Csb,"Temperate, dry summer, warm summer",46,100.0
+Surrey,564,15,Cfb,"Temperate, no dry season, warm summer",293,51.95035460992907
+Surrey,564,9,Csb,"Temperate, dry summer, warm summer",271,48.04964539007092

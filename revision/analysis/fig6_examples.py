@@ -32,7 +32,7 @@ DS = sys.argv[4] if len(sys.argv) > 4 else None
 # the window's four 64 m blocks > 100; see code/analysis/landcover/row_texture.py). The dataset is unchanged.
 RT = sys.argv[5] if len(sys.argv) > 5 else None
 os.makedirs(OUT, exist_ok=True)
-PGC = '/path/to/Urban_data/NASA:PGC/Training_06062024'
+PGC = os.environ.get('URBAN_DATA', '/path/to/Urban_data') + '/NASA:PGC/Training_06062024'
 CITIES = ['austin', 'bloomington', 'cupertino', 'surrey']
 W = 256
 sel = inv[inv.decision == 'v1_ndvi_pan']

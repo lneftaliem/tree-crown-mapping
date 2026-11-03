@@ -11,7 +11,7 @@ Usage: DIAG_DIR=... python 02_prepare_diag.py <tile_inventory.csv>
 import os, sys
 import pandas as pd
 
-FULL = '/path/to/Urban_data/split_audit_20261031/diagnostics_full'
+FULL = os.environ.get('URBAN_DATA', '/path/to/Urban_data') + '/split_audit_20261031/diagnostics_full'
 DIAG = os.environ['DIAG_DIR']
 inv = pd.read_csv(sys.argv[1])
 sel = inv[inv.decision.isin(['regenerated', 'archived_compatible', 'rerun_replaces_incompatible'])]

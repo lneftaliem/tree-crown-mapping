@@ -13,12 +13,13 @@ import sys, json
 import numpy as np, pandas as pd, geopandas as gpd, pyogrio, shapely, rasterio
 from shapely.validation import make_valid
 
-ROOT = '/path/to/Urban_data'
+import os
+ROOT = os.environ.get('URBAN_DATA', '/path/to/Urban_data')
 import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import paths  # noqa: E402
 AUD = paths.DIAG
-CENSUS = f'{ROOT}/ripley_data_0429206/census_boundaries'
+CENSUS = paths.CENSUS
 EPSG = {'austin': 32614, 'bloomington': 32616, 'cupertino': 32610, 'surrey': 32610}
 ATTR = ['median_household_income', 'has_income', 'total_pop', 'pct_white', 'pct_black', 'pct_asian',
         'pct_hispanic_latino', 'pct_indigenous', 'pct_other_multiracial']

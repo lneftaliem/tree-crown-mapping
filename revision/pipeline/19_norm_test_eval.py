@@ -17,7 +17,7 @@ from affine import Affine
 from scipy import ndimage
 import matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt
 
-U = '/path/to/Urban_data'
+U = os.environ.get('URBAN_DATA', '/path/to/Urban_data')
 PGC = f'{U}/NASA:PGC/Training_06062024'
 P = f'{U}/tree_crowns_v1_20261101'
 TH = 0.7

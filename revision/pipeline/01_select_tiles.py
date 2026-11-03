@@ -26,7 +26,7 @@ Usage: python 01_select_tiles.py <out_dir>
 import os, sys, json, glob
 import numpy as np, pandas as pd
 
-ROOT = '/path/to/Urban_data'
+ROOT = os.environ.get('URBAN_DATA', '/path/to/Urban_data')
 OUT = sys.argv[1]
 FULL = f'{ROOT}/split_audit_20261031/diagnostics_full'
 ARCH_SPLIT = f'{ROOT}/split'

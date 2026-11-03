@@ -23,7 +23,7 @@ import repro_data  # noqa: E402
 OUT = os.path.join(repro_data.BASE_DIR, 'analysis_output', 'sensitivity')
 os.makedirs(OUT, exist_ok=True)
 UTM = {'austin': 32614, 'bloomington': 32616, 'cupertino': 32610, 'surrey': 32610}
-ACS_INC = '/path/to/Urban_data/sherlock_venv/notebooks/income_data/ACSDT5Y2023/ACSDT5Y2023.B19013-Data.csv'
+ACS_INC = os.environ.get('URBAN_DATA', '/path/to/Urban_data') + '/sherlock_venv/notebooks/income_data/ACSDT5Y2023/ACSDT5Y2023.B19013-Data.csv'
 d = pd.read_csv(os.path.join(repro_data.EQUITY_STAGE_DIR, 'all_cities_urban_covariates_corrected.csv'))
 uid_col = next(c for c in ('block_group_id', 'GEOID', 'unit_id') if c in d.columns)
 

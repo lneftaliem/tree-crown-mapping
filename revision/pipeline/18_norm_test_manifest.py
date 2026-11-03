@@ -13,7 +13,7 @@ from rasterio.vrt import WarpedVRT
 from affine import Affine
 from pyproj import Transformer
 
-U = '/path/to/Urban_data'
+U = os.environ.get('URBAN_DATA', '/path/to/Urban_data')
 PGC = f'{U}/NASA:PGC/Training_06062024'
 P = f'{U}/tree_crowns_v1_20261101'
 CITIES = ('austin', 'bloomington', 'cupertino', 'surrey')

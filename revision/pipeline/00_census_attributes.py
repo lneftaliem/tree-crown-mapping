@@ -19,17 +19,20 @@ Usage: DIAG_DIR=... python 00_census_attributes.py
 import os, sys, importlib.util
 import numpy as np, pandas as pd
 
-ROOT = '/path/to/Urban_data'
-ORIG = f'{ROOT}/split_audit_20261031/diagnostics_full'
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+import paths  # noqa: E402
+ROOT = paths.ROOT
+ORIG = f'{HERE}/inputs/original_bg_lookup'  # census attributes of the original release
 OUT = os.environ['DIAG_DIR']
 ACS_INC = f'{ROOT}/sherlock_venv/notebooks/income_data/ACSDT5Y2023/ACSDT5Y2023.B19013-Data.csv'
-BG = f'{ROOT}/ripley_data_0429206/census_boundaries'
+BG = paths.CENSUS
 STATCAN = f'{ROOT}/sherlock_venv/notebooks/income_data/98-401-X2021006_BC_CB_eng_CSV/98-401-X2021006_English_CSV_data_BritishColumbia.csv'
 ATTR = ['median_household_income', 'has_income', 'total_pop', 'pct_white', 'pct_black', 'pct_asian', 'pct_hispanic_latino',
         'pct_indigenous', 'pct_other_multiracial']
 CITIES = ('austin', 'bloomington', 'cupertino', 'surrey')
 
-spec = importlib.util.spec_from_file_location('demo', f'{ROOT}/sherlock_venv/add_racial_demographics_to_trees.py')
+spec = importlib.util.spec_from_file_location('demo', f'{HERE}/add_racial_demographics_to_trees.py')
 demo = importlib.util.module_from_spec(spec); spec.loader.exec_module(demo)  # functions only (main() is __main__-guarded)
 demo.CA_CENSUS_PATH = STATCAN
 import geopandas as gpd

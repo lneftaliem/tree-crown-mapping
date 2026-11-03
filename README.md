@@ -4,15 +4,19 @@ Code accompanying the manuscript **"Mapping tree crowns across four North Americ
 
 We fine-tune a U-Net convolutional neural network, originally developed for mapping dryland woody vegetation in the African Sahel ([Brandt et al., 2020](https://doi.org/10.1038/s41586-020-2824-5); [Tucker et al., 2023](https://doi.org/10.1126/science.abg1740)), to delineate individual tree crowns in Austin (TX), Bloomington (IN), Cupertino (CA), and Surrey (BC) from 50 cm multispectral satellite imagery. The model is fine-tuned on 113 annotated images (4,559 crowns) and applied without per-city retraining. Binary predictions (τ = 0.7) are split into individual crowns by center-based instance separation, giving about 3.6 million detected tree crowns across the four cities. We then relate detected-tree density, detected-crown cover, and mean detected crown area to census-level median household income.
 
-**Final analysis.** The results in the revised manuscript come from the code in `revision/` and the final datasets in `data/tree_points/` and `data/covariates/`; the final statistics tables are in `results/final_v1b/` (see **Final analysis** below). The root-level scripts and `reproduce.sh` reproduce the original submission from `data/original_submission/`.
+**Final analysis.** The results in the revised manuscript come from the code in `revision/` and the final datasets in `data/tree_points/` and `data/covariates/`; the final statistics tables are in `results/final_v1b/`. **[`REPRODUCING.md`](REPRODUCING.md) walks through every step, from model fine-tuning to each figure and table.** The root-level scripts and `reproduce.sh` reproduce the original submission from `data/original_submission/`.
+
+Clone with `git clone --recurse-submodules` to include the instance-separation code (`external/separate_instances`).
 
 ## Final analysis
 
 | Folder | Contents |
 |---|---|
-| `revision/sherlock/` | Slurm jobs for city-wide inference (`12_v1b_inference.sbatch`, `regen_v1b.py`) and model validation on the 113 annotated patches |
-| `revision/pipeline/` | Tile selection, instance separation, crown polygons and points, 1.0 m cross-tile deduplication, census joins and the NDVI mask (`build_v1.sh` runs the build; `20_ndvi_mask.py` applies the mask) |
-| `revision/analysis/` | `run_analysis.py`, a single entry point that regenerates every tree-derived statistic, figure and table from one named dataset, plus the adjusted models, Ripley's L, Extended Data tables and figures, sensitivity analyses and land-cover diagnostics. `repo_adapted/` holds the versions of the root-level scripts used for the final run. |
+| `revision/model/` | Training-data preparation and U-Net fine-tuning (`1-Preprocessing.ipynb`, `2-UNetTraining.ipynb` / `.py`, `core/`, `config/`). The fine-tuned weights are on the [v1.0 release](https://github.com/lneftaliem/tree-crown-mapping/releases/tag/v1.0). |
+| `revision/separation/`, `external/separate_instances` | Center-based instance separation: Ankit Kariryaa's [`separate_instances`](https://github.com/ankitkariryaa/separate_instances) (git submodule, pinned to `d81cac7`) and the Sherlock wrapper that runs it on each prediction tile |
+| `revision/sherlock/` | Slurm jobs for city-wide inference (`12_v1b_inference.sbatch`, `regen_v1b.py`, `unet_infer.py`, and the scene and window lists) and model validation on the 113 annotated patches |
+| `revision/pipeline/` | Crown polygons and points from the separated tiles, 1.0 m cross-tile deduplication, census joins and the NDVI mask (`build_v1.sh` runs every step; `inputs/` holds the recorded manual decisions and census attributes it uses) |
+| `revision/analysis/` | `run_analysis.py`, a single entry point that regenerates every tree-derived statistic, figure and table from one named dataset, plus the adjusted models, Ripley's L, Extended Data tables and figures, sensitivity analyses and land-cover diagnostics. `repo_adapted/` holds the versions of the root-level scripts used for the final run; `imagery_metadata/` makes Fig. 5 and Fig. S8; `climate_context/` computes the climate and built-up shares; `fig6_review/` makes Fig. 6. |
 | `results/final_v1b/` | Final statistics tables (unadjusted correlations, adjusted and spatial models, Ripley's L, inventory comparison, sensitivity analyses, Extended Data Table 1) and comparisons with the original submission (`comparison_to_original/`) |
 
 To rerun the analysis, decompress the four city files in `data/tree_points/` into one folder and run:
@@ -21,7 +25,7 @@ To rerun the analysis, decompress the four city files in `data/tree_points/` int
 python revision/analysis/run_analysis.py --dataset <folder> --label final --out <run folder>
 ```
 
-Some steps need inputs not stored here: the crown polygons, the census boundary files and the municipal tree inventories. Paths to local data are written as `/path/to/Urban_data` and need to be set for your machine.
+Some steps need inputs not stored here: the licensed imagery, the crown polygons, the TIGER/Line and StatCan census tables, and the municipal tree inventories. Paths to local data are set with the `URBAN_DATA` environment variable (default `/path/to/Urban_data`); see [`REPRODUCING.md`](REPRODUCING.md).
 
 ## Repository contents (original submission)
 
@@ -144,9 +148,8 @@ The remaining figures (canopy cover and inventory-comparison analyses, Fig. 4's 
 
 This repo contains the analysis and post-processing code. To run the full pipeline end-to-end you'll also need the following, which are **not included here**:
 
-1. **The base model architecture and training code (`core/` and `config/`).** The U-Net implementation, loss functions (`tversky`, `dice_coef`, ...), optimizers, and data generators that `3-RasterAnalysis.py` imports (`from core.UNet import UNet`, `from config import RasterAnalysis`, etc.) come from Ankit Kariryaa's tree-detection framework:
+1. **The base model architecture and training code (`core/` and `config/`).** The versions used in this study are in `revision/model/core/` and `revision/model/config/`; copy them next to the script you run. They follow Ankit Kariryaa's tree-detection framework,
    [ankitkariryaa/An-unexpectedly-large-count-of-trees-in-the-western-Sahara-and-Sahel](https://github.com/ankitkariryaa/An-unexpectedly-large-count-of-trees-in-the-western-Sahara-and-Sahel) (MIT licensed).
-   Clone that repo and copy its `notebooks/core/` and a `notebooks/config/RasterAnalysis.py` (see that repo's `configTemplate/`) into your working directory, or add it as a git submodule. Please retain their license/attribution.
 
 2. **Fine-tuned model weights.** `trees_20260120-1928_AdaDelta_weightmap_tversky_012_256_final.keras` (~376 MB) is too large for a plain GitHub push (GitHub blocks files over 100 MB), so it is distributed as a **GitHub Release asset**: download it from the repository's [**Releases** page](https://github.com/lneftaliem/tree-crown-mapping/releases/latest) (provided as a ~327 MB zip; unzip to get the ~376 MB `.keras` file).
 
@@ -197,7 +200,9 @@ Scripts default to the current working directory if this isn't set. Expected sub
 └── analysis_output/              # all figures and derived tables get written here
 ```
 
-## Pipeline order
+## Pipeline order (original submission)
+
+For the revised manuscript, follow [`REPRODUCING.md`](REPRODUCING.md) instead.
 
 1. Fine-tune / obtain the U-Net model (see `core`/`config` note above).
 2. `3-RasterAnalysis.py`: run inference over image tiles to get canopy probability rasters.

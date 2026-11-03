@@ -30,11 +30,11 @@ from scipy.spatial import cKDTree
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from dedup import dedup_cross_tile, previous_loop  # noqa: E402
 
-ROOT = '/path/to/Urban_data'
+ROOT = os.environ.get('URBAN_DATA', '/path/to/Urban_data')
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import paths  # noqa: E402
 AUD = paths.DIAG
-CENSUS = f'{ROOT}/ripley_data_0429206/census_boundaries'
+CENSUS = paths.CENSUS
 EPSG = {'austin': 32614, 'bloomington': 32616, 'cupertino': 32610, 'surrey': 32610}
 ORIG_REPORTED = {'austin': 1899163, 'bloomington': 116682, 'cupertino': 52720, 'surrey': 1222292}
 MIN_AREA = 3.0

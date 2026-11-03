@@ -43,10 +43,10 @@ from pyproj import Transformer
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from dedup import dedup_cross_tile  # noqa: E402
 
-ROOT = '/path/to/Urban_data'
+ROOT = os.environ.get('URBAN_DATA', '/path/to/Urban_data')
 import paths  # noqa: E402
 AUD = paths.DIAG
-CENSUS = f'{ROOT}/ripley_data_0429206/census_boundaries'
+CENSUS = paths.CENSUS
 SPLIT = paths.SPLIT_DIR
 EPSG = {'austin': 32614, 'bloomington': 32616, 'cupertino': 32610, 'surrey': 32610}
 MIN_AREA = 3.0

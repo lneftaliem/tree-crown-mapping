@@ -22,7 +22,8 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt  # noqa: E402
 
-ROOT = '/path/to/Urban_data'
+import os
+ROOT = os.environ.get('URBAN_DATA', '/path/to/Urban_data')
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import paths  # noqa: E402

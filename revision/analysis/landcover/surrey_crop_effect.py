@@ -9,7 +9,8 @@ Writes outputs/landcover_review/crop_effect_{units,tests}.csv.
 """
 import numpy as np, pandas as pd, statsmodels.api as sm
 from scipy.stats import spearmanr
-P = '/path/to/Urban_data/tree_crowns_v1_20261101'
+import os
+P = os.environ.get('URBAN_DATA', '/path/to/Urban_data') + '/tree_crowns_v1_20261101'
 U = pd.read_csv(f'{P}/outputs/runs/v1b_final/analysis_output/equity_results/all_cities_urban_covariates_corrected.csv')
 PK = pd.read_csv(f'{P}/outputs/runs/v1b_final/analysis_output/equity_results/all_cities_park_covariates.csv')
 U = U.merge(PK[['city', 'GEOID', 'park_pct']], on=['city', 'GEOID'])

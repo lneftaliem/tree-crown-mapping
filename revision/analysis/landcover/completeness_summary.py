@@ -9,7 +9,8 @@ Writes outputs/landcover_review/completeness_units.csv and completeness_tests.cs
 """
 import glob, pandas as pd, numpy as np
 from scipy.stats import spearmanr
-P = '/path/to/Urban_data/tree_crowns_v1_20261101'
+import os
+P = os.environ.get('URBAN_DATA', '/path/to/Urban_data') + '/tree_crowns_v1_20261101'
 c = pd.concat(pd.read_parquet(f) for f in glob.glob(f'{P}/work_v1b/diag/completeness/*.parquet'))
 a = c.groupby(['city', 'uid']).sum(numeric_only=True)
 a['green_share'] = a.n_ndvi06 / a.n_px; a['closed_share'] = a.n_closed / a.n_px

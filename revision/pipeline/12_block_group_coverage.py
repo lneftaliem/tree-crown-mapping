@@ -40,7 +40,7 @@ from matplotlib.colors import ListedColormap, BoundaryNorm  # noqa: E402
 from matplotlib.patches import Patch  # noqa: E402
 from matplotlib.lines import Line2D  # noqa: E402
 
-ROOT = '/path/to/Urban_data'
+ROOT = os.environ.get('URBAN_DATA', '/path/to/Urban_data')
 import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import paths  # noqa: E402
@@ -48,7 +48,7 @@ AUD = paths.AUDIT
 DIAG = paths.DIAG
 OUT = os.environ.get('COVERAGE_OUT', f'{AUD}/block_group_coverage')
 FINAL_DIR = os.environ.get('FINAL_DIR', f'{ROOT}/ripley_data_0429206/all_trees_split')  # final GeoJSONs to assess
-CENSUS = f'{ROOT}/ripley_data_0429206/census_boundaries'
+CENSUS = paths.CENSUS
 
 EPSG = {'austin': 32614, 'bloomington': 32616, 'cupertino': 32610, 'surrey': 32610}
 CITIES = ['bloomington', 'austin', 'cupertino', 'surrey']

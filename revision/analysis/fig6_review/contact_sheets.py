@@ -18,8 +18,9 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch
 
-P = '/path/to/Urban_data/tree_crowns_v1_20261101'
-PGC = '/path/to/Urban_data/NASA:PGC/Training_06062024'
+import os
+P = os.environ.get('URBAN_DATA', '/path/to/Urban_data') + '/tree_crowns_v1_20261101'
+PGC = os.environ.get('URBAN_DATA', '/path/to/Urban_data') + '/NASA:PGC/Training_06062024'
 CITIES = ('austin', 'bloomington', 'cupertino', 'surrey')
 C, OUT = pd.read_csv(sys.argv[1]), sys.argv[2]
 assert set(C.city) <= set(CITIES)

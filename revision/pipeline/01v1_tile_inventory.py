@@ -19,9 +19,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 P = os.path.dirname(os.path.dirname(HERE))
 V1, OUT = sys.argv[1:3]
 CITIES = ('austin', 'bloomington', 'cupertino', 'surrey')
-win = pd.read_csv(f'{P}/code/sherlock/v1_windows.csv')
+win = pd.read_csv(f'{P}/revision/sherlock/v1_windows.csv')
 assert win.filename.is_unique and win.window.is_unique and len(win) == 347 and set(win.city) <= set(CITIES)
-hist = pd.read_csv(f'{P}/outputs/work/historical_panpan_selection/tile_inventory.csv')
+hist = pd.read_csv(f'{HERE}/inputs/historical_tile_inventory.csv')
 hist = hist[hist.city.isin(CITIES) & (hist.decision != 'not_used_outside_city')]
 
 stats = {}

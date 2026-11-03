@@ -18,7 +18,8 @@ import sys, os
 import numpy as np, pandas as pd, rasterio, pyogrio
 from multiprocessing import Pool
 
-P = '/path/to/Urban_data/tree_crowns_v1_20261101'
+import os
+P = os.environ.get('URBAN_DATA', '/path/to/Urban_data') + '/tree_crowns_v1_20261101'
 CITIES = ('austin', 'bloomington', 'cupertino', 'surrey')
 CITY, OUT, NW = sys.argv[1], sys.argv[2], int(sys.argv[3])
 assert CITY in CITIES

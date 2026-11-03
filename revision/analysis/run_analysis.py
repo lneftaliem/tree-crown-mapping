@@ -21,7 +21,7 @@ import os, sys, json, glob, time, argparse, subprocess, hashlib, shutil
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.join(HERE, 'repo_adapted')
 PY = sys.executable
-INVENTORY_CSV = '/path/to/Urban_data/sherlock_venv/notebooks/urbantreedata_2023/new_data.csv'
+INVENTORY_CSV = os.environ.get('INVENTORY_CSV', '/path/to/Urban_data/sherlock_venv/notebooks/urbantreedata_2023/new_data.csv')
 
 # (name, command (relative to HERE / REPO), cwd = run dir, outputs that mark the step done)
 STEPS = [

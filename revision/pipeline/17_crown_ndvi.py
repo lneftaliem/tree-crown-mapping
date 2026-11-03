@@ -14,7 +14,7 @@ from rasterio.enums import Resampling
 from multiprocessing import Pool
 from types import SimpleNamespace
 
-PGC = '/path/to/Urban_data/NASA:PGC/Training_06062024'
+PGC = os.environ.get('URBAN_DATA', '/path/to/Urban_data') + '/NASA:PGC/Training_06062024'
 OUT = os.path.join(os.environ['DIAG_DIR'], 'crown_ndvi')
 CITIES = ('austin', 'bloomington', 'cupertino', 'surrey')
 

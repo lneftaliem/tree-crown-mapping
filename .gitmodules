@@ -1,0 +1,3 @@
+[submodule "external/separate_instances"]
+	path = external/separate_instances
+	url = https://github.com/ankitkariryaa/separate_instances
