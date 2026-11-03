@@ -51,7 +51,7 @@ import shutil
 # Location of THIS repository (where the committed data lives), independent of
 # the caller's working directory.
 REPO_DIR = os.path.dirname(os.path.abspath(__file__))
-COMMITTED_POINTS_DIR = os.path.join(REPO_DIR, "data", "tree_points")
+COMMITTED_POINTS_DIR = os.path.join(REPO_DIR, "data", "original_submission", "tree_points")
 COMMITTED_BOUNDARIES_DIR = os.path.join(REPO_DIR, "data", "boundaries")
 
 # Where the analysis scripts read their inputs from.
@@ -157,7 +157,7 @@ def stage_all(cities=CITIES, points=True, boundaries=True, force=False):
 
 # ── Covariate tables, redlining polygons, corrected crown areas ──────────────
 
-COMMITTED_COVARIATES_DIR = os.path.join(REPO_DIR, "data", "covariates")
+COMMITTED_COVARIATES_DIR = os.path.join(REPO_DIR, "data", "original_submission", "covariates")
 COMMITTED_REDLINING_DIR = os.path.join(REPO_DIR, "data", "redlining")
 EQUITY_STAGE_DIR = os.path.join(BASE_DIR, "analysis_output", "equity_results")
 CORRECTED_STAGE_DIR = os.path.join(BASE_DIR, "analysis_output", "ripley_data_corrected")

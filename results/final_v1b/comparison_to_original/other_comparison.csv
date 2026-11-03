@@ -1,0 +1,121 @@
+run,analysis,city,n,value,p,extra
+v1b_primary,Ripley AUC vs income (Spearman),austin,606,0.1910086890575353,2.179365103745913e-06,share clustered all r = 0.000
+v1b_primary,Ripley AUC vs income (Spearman),bloomington,59,0.198947983635301,0.1308910757801931,share clustered all r = 0.000
+v1b_primary,Ripley AUC vs income (Spearman),cupertino,28,0.0147783251231527,0.9405026282514244,share clustered all r = 0.000
+v1b_primary,Ripley AUC vs income (Spearman),surrey,632,0.084606108129206,0.0334559930340544,share clustered all r = 0.000
+v1b_primary,Inventory vs model counts (Spearman),austin,693,0.1152315180931451,0.0023806937632068,model trees in units = 2586912
+v1b_primary,Inventory vs model counts (Spearman),bloomington,70,0.5617223699518443,4.2072860811565707e-07,model trees in units = 143323
+v1b_primary,Inventory vs model counts (Spearman),cupertino,48,0.6817602171648846,9.56348562768873e-08,model trees in units = 118413
+v1b_primary,Inventory vs model counts (Spearman),surrey,666,0.4510809407213871,1.0772202079619091e-34,model trees in units = 765995
+v1b_primary,HOLC grade A,austin,31630,2000.8084950461557,,mean crown 16.347 m2; crown fraction 3.271 %
+v1b_primary,HOLC grade B,austin,38622,2751.942666279671,,mean crown 18.844 m2; crown fraction 5.186 %
+v1b_primary,HOLC grade C,austin,8279,2135.9277811348406,,mean crown 26.995 m2; crown fraction 5.766 %
+v1b_primary,HOLC grade D,austin,28060,2345.0629065471057,,mean crown 20.026 m2; crown fraction 4.696 %
+v1b_primary,Fig S12: Original Published Baseline (m2),surrey,634,-0.4025930815678238,4.215842607110922e-26,excluded area 0.0 %
+v1b_primary,Fig S12: Exclude Components > 200 m2,surrey,634,-0.4202088325626014,1.6290290436630076e-28,excluded area 5.3 %
+v1b_primary,Fig S12: Exclude Components > 100 m2,surrey,634,-0.405903475872632,1.521724332941065e-26,excluded area 12.4 %
+v1b_primary,Fig S12: Exclude Components > 50 m2,surrey,634,-0.3766887704742678,8.322359072431739e-23,excluded area 30.7 %
+v1b_primary,Fig S12: Exclude Components > 25 m2,surrey,634,-0.3174529773511853,2.606225374949092e-16,excluded area 59.6 %
+v1b_primary,Fig S12: Exclude Components < 3 px (~0.97 m2),surrey,634,-0.4025930815678238,4.215842607110922e-26,excluded area 0.0 %
+v1b_primary,Fig S12: Exclude Components < 5 px (~1.62 m2),surrey,634,-0.4025930815678238,4.215842607110922e-26,excluded area 0.0 %
+v1b_primary,Fig S12: Exclude Components < 10 px (~3.24 m2),surrey,634,-0.4025930815678238,4.215842607110922e-26,excluded area 0.0 %
+v1b_primary,Fig S12: Retain 5 to 100 m2 Components,surrey,634,-0.4050298184898787,1.993488628920742e-26,excluded area 15.6 %
+v1b_primary,Fig S12: Min 10 px (~3.24 m2) & Max 100 m2,surrey,634,-0.405903475872632,1.521724332941065e-26,excluded area 12.4 %
+v1b_primary,Fig S12: Min 3 px (~0.97 m2) & Max 100 m2,surrey,634,-0.405903475872632,1.521724332941065e-26,excluded area 12.4 %
+v1b_primary,Fig S12: Min 3 px (~0.97 m2) & Max 50 m2,surrey,634,-0.3766887704742678,8.322359072431739e-23,excluded area 30.7 %
+v1b_primary,Fig S12: Median Crown Area,surrey,634,-0.387218294019811,4.1308784811372465e-24,excluded area 0.0 %
+v1b_primary,Fig S12: 75th Percentile Crown Area,surrey,634,-0.401767413882285,5.426131016800219e-26,excluded area 0.0 %
+v1b_primary,Fig S12: 90th Percentile Crown Area,surrey,634,-0.3881264719600307,3.1718870351730208e-24,excluded area 0.0 %
+v1b_primary,Fig S12: Exclude Highest 10% Canopy DAs,surrey,570,-0.4281984066279631,8.076606378206352e-27,excluded area 0.0 %
+v1b_primary,Fig S12: Exclude Highest 20% Canopy DAs,surrey,507,-0.4055345462100287,1.716958974724545e-21,excluded area 0.0 %
+v1b_unmasked,Ripley AUC vs income (Spearman),austin,606,0.2045129522452269,3.816678826708876e-07,share clustered all r = 0.000
+v1b_unmasked,Ripley AUC vs income (Spearman),bloomington,59,0.2084745762711864,0.1130739798551878,share clustered all r = 0.000
+v1b_unmasked,Ripley AUC vs income (Spearman),cupertino,28,0.016967706622879,0.9317071794908974,share clustered all r = 0.000
+v1b_unmasked,Ripley AUC vs income (Spearman),surrey,632,0.0990535314754092,0.0127252609047646,share clustered all r = 0.000
+v1b_unmasked,Inventory vs model counts (Spearman),austin,693,0.1123036171707368,0.003072262066537,model trees in units = 2677292
+v1b_unmasked,Inventory vs model counts (Spearman),bloomington,70,0.5618101335869221,4.18612518531357e-07,model trees in units = 144548
+v1b_unmasked,Inventory vs model counts (Spearman),cupertino,48,0.6769824120274703,1.2701450949195805e-07,model trees in units = 119171
+v1b_unmasked,Inventory vs model counts (Spearman),surrey,666,0.451270087424353,1.0028272225473151e-34,model trees in units = 793922
+v1b_unmasked,HOLC grade A,austin,34407,2176.4722696507456,,mean crown 15.899 m2; crown fraction 3.460 %
+v1b_unmasked,HOLC grade B,austin,38774,2762.7731588816723,,mean crown 18.806 m2; crown fraction 5.196 %
+v1b_unmasked,HOLC grade C,austin,8572,2211.5198622886646,,mean crown 26.464 m2; crown fraction 5.853 %
+v1b_unmasked,HOLC grade D,austin,28307,2365.705477392335,,mean crown 19.961 m2; crown fraction 4.722 %
+v1b_unmasked,Fig S12: Original Published Baseline (m2),surrey,634,-0.3928619342166165,7.893730308701703e-25,excluded area 0.0 %
+v1b_unmasked,Fig S12: Exclude Components > 200 m2,surrey,634,-0.4104458961577927,3.68932517404854e-27,excluded area 5.3 %
+v1b_unmasked,Fig S12: Exclude Components > 100 m2,surrey,634,-0.3947656746732889,4.484075098713346e-25,excluded area 12.4 %
+v1b_unmasked,Fig S12: Exclude Components > 50 m2,surrey,634,-0.3656375061430617,1.73250663761216e-21,excluded area 30.5 %
+v1b_unmasked,Fig S12: Exclude Components > 25 m2,surrey,634,-0.3053626819161575,3.773895036304094e-15,excluded area 59.3 %
+v1b_unmasked,Fig S12: Exclude Components < 3 px (~0.97 m2),surrey,634,-0.3928619342166165,7.893730308701703e-25,excluded area 0.0 %
+v1b_unmasked,Fig S12: Exclude Components < 5 px (~1.62 m2),surrey,634,-0.3928619342166165,7.893730308701703e-25,excluded area 0.0 %
+v1b_unmasked,Fig S12: Exclude Components < 10 px (~3.24 m2),surrey,634,-0.3928619342166165,7.893730308701703e-25,excluded area 0.0 %
+v1b_unmasked,Fig S12: Retain 5 to 100 m2 Components,surrey,634,-0.3968611148969008,2.3959448664652847e-25,excluded area 15.6 %
+v1b_unmasked,Fig S12: Min 10 px (~3.24 m2) & Max 100 m2,surrey,634,-0.3947656746732889,4.484075098713346e-25,excluded area 12.4 %
+v1b_unmasked,Fig S12: Min 3 px (~0.97 m2) & Max 100 m2,surrey,634,-0.3947656746732889,4.484075098713346e-25,excluded area 12.4 %
+v1b_unmasked,Fig S12: Min 3 px (~0.97 m2) & Max 50 m2,surrey,634,-0.3656375061430617,1.73250663761216e-21,excluded area 30.5 %
+v1b_unmasked,Fig S12: Median Crown Area,surrey,634,-0.3773491115336326,6.915856652469016e-23,excluded area 0.0 %
+v1b_unmasked,Fig S12: 75th Percentile Crown Area,surrey,634,-0.3914215133293219,1.2079690923988482e-24,excluded area 0.0 %
+v1b_unmasked,Fig S12: 90th Percentile Crown Area,surrey,634,-0.379562877678983,3.7064474846344296e-23,excluded area 0.0 %
+v1b_unmasked,Fig S12: Exclude Highest 10% Canopy DAs,surrey,570,-0.4168180225121535,2.3048169317467015e-25,excluded area 0.0 %
+v1b_unmasked,Fig S12: Exclude Highest 20% Canopy DAs,surrey,507,-0.3914333241709622,5.186542232601211e-20,excluded area 0.0 %
+v1b_ndvi03,Ripley AUC vs income (Spearman),austin,606,0.1782553951517518,1.0125870409163118e-05,share clustered all r = 0.000
+v1b_ndvi03,Ripley AUC vs income (Spearman),bloomington,59,0.2006428988895383,0.127575181712068,share clustered all r = 0.000
+v1b_ndvi03,Ripley AUC vs income (Spearman),cupertino,28,0.0049261083743842,0.9801521411454508,share clustered all r = 0.000
+v1b_ndvi03,Ripley AUC vs income (Spearman),surrey,631,0.0689441441782043,0.0835440632196856,share clustered all r = 0.000
+original_reproduction,Ripley AUC vs income (Spearman),austin,601,0.0915919016636633,0.0247392586748182,share clustered all r = 0.973
+original_reproduction,Ripley AUC vs income (Spearman),bloomington,57,0.0177599170339642,0.8956771122309263,share clustered all r = 0.982
+original_reproduction,Ripley AUC vs income (Spearman),cupertino,28,-0.0607553366174055,0.7587569748353266,share clustered all r = 1.000
+original_reproduction,Ripley AUC vs income (Spearman),surrey,563,0.0819553926478511,0.0519491325083074,share clustered all r = 0.741
+original_reproduction,Inventory vs model counts (Spearman),austin,693,0.0367686182304486,0.3337893343655535,model trees in units = 1899163
+original_reproduction,Inventory vs model counts (Spearman),bloomington,70,0.3832637943846798,0.001057009205266,model trees in units = 116682
+original_reproduction,Inventory vs model counts (Spearman),cupertino,48,0.6659065910271011,2.404324115623409e-07,model trees in units = 52720
+original_reproduction,Inventory vs model counts (Spearman),surrey,666,0.394157558961622,3.519669453006976e-26,model trees in units = 1222292
+original_reproduction,HOLC grade A,austin,23357,1477.4860581344628,,mean crown 1.343 m2; crown fraction 0.198 %
+original_reproduction,HOLC grade B,austin,11915,848.9823641634891,,mean crown 1.654 m2; crown fraction 0.140 %
+original_reproduction,HOLC grade C,austin,2439,629.2460270791008,,mean crown 1.517 m2; crown fraction 0.095 %
+original_reproduction,HOLC grade D,austin,8377,700.0923723501462,,mean crown 1.608 m2; crown fraction 0.113 %
+original_reproduction,Fig S12: Original Published Baseline (m2),surrey,570,-0.1432052405423018,0.000605445923675,excluded area 0.0 %
+original_reproduction,Fig S12: Exclude Components > 200 m2,surrey,570,-0.1481771570980954,0.0003859222139375,excluded area 10.8 %
+original_reproduction,Fig S12: Exclude Components > 100 m2,surrey,570,-0.1484270863354687,0.0003771429497738,excluded area 17.4 %
+original_reproduction,Fig S12: Exclude Components > 50 m2,surrey,570,-0.1412186384828077,0.0007219461709173,excluded area 26.6 %
+original_reproduction,Fig S12: Exclude Components > 25 m2,surrey,570,-0.1367293416678978,0.0010656919162169,excluded area 38.7 %
+original_reproduction,Fig S12: Exclude Components < 3 px (~0.97 m2),surrey,570,-0.11245619987661,0.007199109442904,excluded area 5.9 %
+original_reproduction,Fig S12: Exclude Components < 5 px (~1.62 m2),surrey,570,-0.0941109790868857,0.0246447991326086,excluded area 9.9 %
+original_reproduction,Fig S12: Exclude Components < 10 px (~3.24 m2),surrey,570,-0.0786533434300592,0.0605717492430444,excluded area 18.0 %
+original_reproduction,Fig S12: Retain 5 to 100 m2 Components,surrey,568,-0.0770069053748517,0.0666588402426649,excluded area 43.0 %
+original_reproduction,Fig S12: Min 10 px (~3.24 m2) & Max 100 m2,surrey,570,-0.0766026469803766,0.0676194608867302,excluded area 35.4 %
+original_reproduction,Fig S12: Min 3 px (~0.97 m2) & Max 100 m2,surrey,570,-0.1187553045180166,0.0045244831961426,excluded area 23.4 %
+original_reproduction,Fig S12: Min 3 px (~0.97 m2) & Max 50 m2,surrey,570,-0.1091956489039396,0.0090782472775069,excluded area 32.6 %
+original_reproduction,Fig S12: Median Crown Area,surrey,570,-0.0357378400942925,0.3944204300770268,excluded area 0.0 %
+original_reproduction,Fig S12: 75th Percentile Crown Area,surrey,570,-0.1379327478675046,0.0009611296477816,excluded area 0.0 %
+original_reproduction,Fig S12: 90th Percentile Crown Area,surrey,570,-0.1114853545659735,0.0077184737336051,excluded area 0.0 %
+original_reproduction,Fig S12: Exclude Highest 10% Canopy DAs,surrey,513,-0.1275737264695422,0.0038004436613106,excluded area 0.0 %
+original_reproduction,Fig S12: Exclude Highest 20% Canopy DAs,surrey,456,-0.1761696302143907,0.0001560476538306,excluded area 0.0 %
+mixed_vintage,Ripley AUC vs income (Spearman),austin,542,0.0408433804359709,0.3425844262361156,share clustered all r = 0.042
+mixed_vintage,Ripley AUC vs income (Spearman),bloomington,42,0.0401102017664695,0.8008860901603578,share clustered all r = 0.024
+mixed_vintage,Ripley AUC vs income (Spearman),cupertino,25,-0.2323076923076923,0.2638040049777122,share clustered all r = 0.000
+mixed_vintage,Ripley AUC vs income (Spearman),surrey,533,-0.0322399981368089,0.4576247068566577,share clustered all r = 0.030
+mixed_vintage,Inventory vs model counts (Spearman),austin,693,0.0401639028882779,0.2910468978521001,model trees in units = 256737
+mixed_vintage,Inventory vs model counts (Spearman),bloomington,70,0.3817249780836413,0.0011115672957051,model trees in units = 15223
+mixed_vintage,Inventory vs model counts (Spearman),cupertino,48,0.6947219901041061,4.3094587217151574e-08,model trees in units = 9850
+mixed_vintage,Inventory vs model counts (Spearman),surrey,666,0.446755438909293,5.466654299674524e-34,model trees in units = 301007
+mixed_vintage,HOLC grade A,austin,3113,196.9180159683428,,mean crown 5.374 m2; crown fraction 0.106 %
+mixed_vintage,HOLC grade B,austin,2291,163.2411746788547,,mean crown 5.233 m2; crown fraction 0.085 %
+mixed_vintage,HOLC grade C,austin,411,106.03530837618304,,mean crown 5.043 m2; crown fraction 0.053 %
+mixed_vintage,HOLC grade D,austin,1518,126.86405887877784,,mean crown 5.237 m2; crown fraction 0.066 %
+mixed_vintage,Fig S12: Original Published Baseline (m2),surrey,568,0.0708924644720822,0.0914180103513371,excluded area 0.0 %
+mixed_vintage,Fig S12: Exclude Components > 200 m2,surrey,568,0.0706247889224253,0.0926512297239566,excluded area 3.3 %
+mixed_vintage,Fig S12: Exclude Components > 100 m2,surrey,568,0.0700829866262333,0.0951881470397908,excluded area 8.2 %
+mixed_vintage,Fig S12: Exclude Components > 50 m2,surrey,568,0.0669858554224284,0.1107722160340728,excluded area 19.6 %
+mixed_vintage,Fig S12: Exclude Components > 25 m2,surrey,568,0.054920840119695,0.1912066555740226,excluded area 39.2 %
+mixed_vintage,Fig S12: Exclude Components < 3 px (~0.97 m2),surrey,568,0.0708924644720822,0.0914180103513371,excluded area 0.0 %
+mixed_vintage,Fig S12: Exclude Components < 5 px (~1.62 m2),surrey,568,0.0708924644720822,0.0914180103513371,excluded area 0.0 %
+mixed_vintage,Fig S12: Exclude Components < 10 px (~3.24 m2),surrey,568,0.0708924644720822,0.0914180103513371,excluded area 0.0 %
+mixed_vintage,Fig S12: Retain 5 to 100 m2 Components,surrey,568,0.0827794987848003,0.0486207470709078,excluded area 17.2 %
+mixed_vintage,Fig S12: Min 10 px (~3.24 m2) & Max 100 m2,surrey,568,0.0700829866262333,0.0951881470397908,excluded area 8.2 %
+mixed_vintage,Fig S12: Min 3 px (~0.97 m2) & Max 100 m2,surrey,568,0.0700829866262333,0.0951881470397908,excluded area 8.2 %
+mixed_vintage,Fig S12: Min 3 px (~0.97 m2) & Max 50 m2,surrey,568,0.0669858554224284,0.1107722160340728,excluded area 19.6 %
+mixed_vintage,Fig S12: Median Crown Area,surrey,568,0.0756883890223516,0.07147072267509,excluded area 0.0 %
+mixed_vintage,Fig S12: 75th Percentile Crown Area,surrey,568,0.067580806411683,0.1076320515882461,excluded area 0.0 %
+mixed_vintage,Fig S12: 90th Percentile Crown Area,surrey,568,0.0758624076021017,0.07081983167398,excluded area 0.0 %
+mixed_vintage,Fig S12: Exclude Highest 10% Canopy DAs,surrey,511,0.0586405561631026,0.1856755675590067,excluded area 0.0 %
+mixed_vintage,Fig S12: Exclude Highest 20% Canopy DAs,surrey,454,0.0063015315336754,0.8934819283264424,excluded area 0.0 %

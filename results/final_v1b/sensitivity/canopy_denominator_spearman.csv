@@ -1,0 +1,21 @@
+city,metric,specification,n,rho,p
+austin,canopy cover,primary (summed crowns / full unit),615,-0.17074397511769876,2.0719079088047424e-05
+austin,canopy cover,polygon union / full unit,615,-0.17074397511769876,2.0719079088047424e-05
+austin,canopy cover,summed crowns / municipality-clipped unit,615,-0.13396365114060169,0.0008670414980384044
+austin,tree density,primary (full unit),615,-0.10145964232084341,0.011819173504148888
+austin,tree density,municipality-clipped unit,615,-0.034787260453101404,0.3891270249437944
+bloomington,canopy cover,primary (summed crowns / full unit),63,-0.6301843317972351,3.12523855103482e-08
+bloomington,canopy cover,polygon union / full unit,63,-0.6301843317972351,3.12523855103482e-08
+bloomington,canopy cover,summed crowns / municipality-clipped unit,63,-0.3912730414746544,0.0015197192637897237
+bloomington,tree density,primary (full unit),63,-0.4540130568356375,0.00018594047575353327
+bloomington,tree density,municipality-clipped unit,63,-0.27140937019969275,0.031423161094905866
+cupertino,canopy cover,primary (summed crowns / full unit),31,0.02620967741935484,0.8886945514139858
+cupertino,canopy cover,polygon union / full unit,31,0.02620967741935484,0.8886945514139858
+cupertino,canopy cover,summed crowns / municipality-clipped unit,31,0.058467741935483875,0.754718024894828
+cupertino,tree density,primary (full unit),31,0.22137096774193551,0.23138080743047001
+cupertino,tree density,municipality-clipped unit,31,0.020564516129032262,0.9125643747275991
+surrey,canopy cover,primary (summed crowns / full unit),635,-0.16191066480004457,4.1483580048798783e-05
+surrey,canopy cover,polygon union / full unit,635,-0.1619017589788675,4.152454762236235e-05
+surrey,canopy cover,summed crowns / municipality-clipped unit,635,-0.16192878111522846,4.140036142059488e-05
+surrey,tree density,primary (full unit),635,0.02651935588275639,0.5047291049256456
+surrey,tree density,municipality-clipped unit,635,0.026523738484230366,0.5046586697355466

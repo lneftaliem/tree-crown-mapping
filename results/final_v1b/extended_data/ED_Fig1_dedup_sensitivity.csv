@@ -1,0 +1,13 @@
+city,threshold_m,n_trees,removed,pct_retained
+Austin,0.8,2677292,0,100.0
+Austin,1.0,2677292,0,100.0
+Austin,1.5,2677288,4,99.99985059530302
+Bloomington,0.8,144548,0,100.0
+Bloomington,1.0,144548,0,100.0
+Bloomington,1.5,144548,0,100.0
+Cupertino,0.8,119171,0,100.0
+Cupertino,1.0,119171,0,100.0
+Cupertino,1.5,119171,0,100.0
+Surrey,0.8,793922,0,100.0
+Surrey,1.0,793922,0,100.0
+Surrey,1.5,793922,0,100.0

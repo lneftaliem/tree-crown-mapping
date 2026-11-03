@@ -1,0 +1,49 @@
+city,outcome,weights,stage,I,p_sim
+austin,Tree Density,queen,spatially filtered residuals,-0.04279258402959256,0.0375
+austin,Tree Density,knn5,spatially filtered residuals,0.0008223972130553329,0.4451
+austin,Tree Density,queen,OLS residuals,0.2456421025352491,0.0001
+austin,Tree Density,knn5,OLS residuals,0.26619286917649687,0.0001
+austin,Canopy Cover,queen,spatially filtered residuals,-0.04868915830196979,0.0312
+austin,Canopy Cover,knn5,spatially filtered residuals,0.0014213249810205667,0.4418
+austin,Canopy Cover,queen,OLS residuals,0.35545029669006334,0.0001
+austin,Canopy Cover,knn5,OLS residuals,0.345994593748212,0.0001
+austin,Crown Area,queen,spatially filtered residuals,-0.0149232929535704,0.3071
+austin,Crown Area,knn5,spatially filtered residuals,-0.005137971130956622,0.4461
+austin,Crown Area,queen,OLS residuals,0.3815977089399696,0.0001
+austin,Crown Area,knn5,OLS residuals,0.34295813686436827,0.0001
+bloomington,Tree Density,queen,spatially filtered residuals,0.002764077948538495,0.3965
+bloomington,Tree Density,knn5,spatially filtered residuals,0.005047661614422233,0.3625
+bloomington,Tree Density,queen,OLS residuals,-0.015257519214214584,0.4752
+bloomington,Tree Density,knn5,OLS residuals,0.061487629764053336,0.1366
+bloomington,Canopy Cover,queen,spatially filtered residuals,-0.014486031482507716,0.4773
+bloomington,Canopy Cover,knn5,spatially filtered residuals,0.009397041111462586,0.3415
+bloomington,Canopy Cover,queen,OLS residuals,0.09051027257232626,0.093
+bloomington,Canopy Cover,knn5,OLS residuals,0.10547620497338067,0.0557
+bloomington,Crown Area,queen,spatially filtered residuals,-0.00021934195688400683,0.3999
+bloomington,Crown Area,knn5,spatially filtered residuals,0.0008228423106264371,0.3848
+bloomington,Crown Area,queen,OLS residuals,0.00811441126359149,0.3682
+bloomington,Crown Area,knn5,OLS residuals,0.019242798669130732,0.2892
+cupertino,Tree Density,queen,spatially filtered residuals,0.036385607966266546,0.2488
+cupertino,Tree Density,knn5,spatially filtered residuals,0.00952029973195677,0.2828
+cupertino,Tree Density,queen,OLS residuals,0.19623259189761713,0.0615
+cupertino,Tree Density,knn5,OLS residuals,0.04709825828329097,0.1654
+cupertino,Canopy Cover,queen,spatially filtered residuals,0.012621818353216487,0.3412
+cupertino,Canopy Cover,knn5,spatially filtered residuals,0.007019201211649059,0.2947
+cupertino,Canopy Cover,queen,OLS residuals,0.10867276891910575,0.1531
+cupertino,Canopy Cover,knn5,OLS residuals,0.024490776599208203,0.2281
+cupertino,Crown Area,queen,spatially filtered residuals,0.07009817147781201,0.1588
+cupertino,Crown Area,knn5,spatially filtered residuals,0.02992683373915971,0.1517
+cupertino,Crown Area,queen,OLS residuals,0.12032537847706709,0.0612
+cupertino,Crown Area,knn5,OLS residuals,0.12301294079417131,0.0077
+surrey,Tree Density,queen,spatially filtered residuals,0.055732293999529,0.0115
+surrey,Tree Density,knn5,spatially filtered residuals,0.03971851390705425,0.0398
+surrey,Tree Density,queen,OLS residuals,0.44571222611325734,0.0001
+surrey,Tree Density,knn5,OLS residuals,0.43770077931065876,0.0001
+surrey,Canopy Cover,queen,spatially filtered residuals,0.0005221772459468205,0.454
+surrey,Canopy Cover,knn5,spatially filtered residuals,0.007068539504440849,0.3425
+surrey,Canopy Cover,queen,OLS residuals,0.5055714574863356,0.0001
+surrey,Canopy Cover,knn5,OLS residuals,0.5185339558295853,0.0001
+surrey,Crown Area,queen,spatially filtered residuals,-0.03496808902704041,0.0752
+surrey,Crown Area,knn5,spatially filtered residuals,-0.02146492406604736,0.2013
+surrey,Crown Area,queen,OLS residuals,0.3473520207465568,0.0001
+surrey,Crown Area,knn5,OLS residuals,0.3496388117352143,0.0001

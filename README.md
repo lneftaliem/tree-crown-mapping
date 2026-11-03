@@ -2,9 +2,28 @@
 
 Code accompanying the manuscript **"Mapping tree crowns across four North American cities"** (Neftaliem et al.). The paper has been submitted for publication.
 
-We fine-tune a U-Net convolutional neural network, originally developed for mapping dryland woody vegetation in the African Sahel ([Brandt et al., 2020](https://doi.org/10.1038/s41586-020-2824-5); [Tucker et al., 2023](https://doi.org/10.1126/science.abg1740)), to delineate individual tree crowns in Austin (TX), Bloomington (IN), Cupertino (CA), and Surrey (BC) from 50 cm multispectral satellite imagery. The model is fine-tuned on 113 annotated images (4,589 crowns) and applied to map ~3.3 million trees across the four cities without per-city retraining. We then relate crown-level tree density, canopy cover, and crown size to census-level median household income.
+We fine-tune a U-Net convolutional neural network, originally developed for mapping dryland woody vegetation in the African Sahel ([Brandt et al., 2020](https://doi.org/10.1038/s41586-020-2824-5); [Tucker et al., 2023](https://doi.org/10.1126/science.abg1740)), to delineate individual tree crowns in Austin (TX), Bloomington (IN), Cupertino (CA), and Surrey (BC) from 50 cm multispectral satellite imagery. The model is fine-tuned on 113 annotated images (4,559 crowns) and applied without per-city retraining. Binary predictions (τ = 0.7) are split into individual crowns by center-based instance separation, giving about 3.6 million detected tree crowns across the four cities. We then relate detected-tree density, detected-crown cover, and mean detected crown area to census-level median household income.
 
-## Repository contents
+**Final analysis.** The results in the revised manuscript come from the code in `revision/` and the final datasets in `data/tree_points/` and `data/covariates/`; the final statistics tables are in `results/final_v1b/` (see **Final analysis** below). The root-level scripts and `reproduce.sh` reproduce the original submission from `data/original_submission/`.
+
+## Final analysis
+
+| Folder | Contents |
+|---|---|
+| `revision/sherlock/` | Slurm jobs for city-wide inference (`12_v1b_inference.sbatch`, `regen_v1b.py`) and model validation on the 113 annotated patches |
+| `revision/pipeline/` | Tile selection, instance separation, crown polygons and points, 1.0 m cross-tile deduplication, census joins and the NDVI mask (`build_v1.sh` runs the build; `20_ndvi_mask.py` applies the mask) |
+| `revision/analysis/` | `run_analysis.py`, a single entry point that regenerates every tree-derived statistic, figure and table from one named dataset, plus the adjusted models, Ripley's L, Extended Data tables and figures, sensitivity analyses and land-cover diagnostics. `repo_adapted/` holds the versions of the root-level scripts used for the final run. |
+| `results/final_v1b/` | Final statistics tables (unadjusted correlations, adjusted and spatial models, Ripley's L, inventory comparison, sensitivity analyses, Extended Data Table 1) and comparisons with the original submission (`comparison_to_original/`) |
+
+To rerun the analysis, decompress the four city files in `data/tree_points/` into one folder and run:
+
+```bash
+python revision/analysis/run_analysis.py --dataset <folder> --label final --out <run folder>
+```
+
+Some steps need inputs not stored here: the crown polygons, the census boundary files and the municipal tree inventories. Paths to local data are written as `/path/to/Urban_data` and need to be set for your machine.
+
+## Repository contents (original submission)
 
 | Script | Stage | Purpose |
 |---|---|---|
@@ -44,15 +63,16 @@ data/
 ├── boundaries/
 │   ├── <city>_exact_boundary.geojson        # city/study-area outline
 │   └── <city>_exact_block_groups.geojson    # census block groups / dissemination areas used in the analysis
-├── tree_points/
+├── tree_points/                                   # FINAL per-tree datasets (see data/tree_points/README.md)
 │   ├── cupertino_ripley_points_with_income.geojson.gz
 │   ├── bloomington_ripley_points_with_income.geojson.gz
-│   ├── austin_ripley_points_with_income.geojson.gz.part00 ... part09
-│   └── surrey_ripley_points_with_income.geojson.gz.part00 ... part05
-├── covariates/
-│   ├── all_cities_urban_covariates.csv            # one row per census unit (1,283): income, housing, distance to downtown, tree metrics
+│   ├── austin_ripley_points_with_income.geojson.gz.part00 ... part20
+│   └── surrey_ripley_points_with_income.geojson.gz.part00 ... part06
+├── covariates/                                    # FINAL census-unit tables (1,344 analysis units)
+│   ├── all_cities_urban_covariates.csv            # income, housing, distance to downtown, tree metrics
 │   ├── all_cities_urban_covariates_corrected.csv  # same, with latitude-corrected crown area and canopy cover
 │   └── all_cities_park_covariates.csv             # park and natural-area coverage per census unit
+├── original_submission/                           # tree points and covariates of the original submission (1,283 units)
 ├── redlining/
 │   └── austin_redlining_data.json                 # 1937 HOLC polygons (Mapping Inequality, CC BY-NC-SA 4.0; see data/redlining/README.md)
 ├── imagery_cutlines/
@@ -63,15 +83,15 @@ data/
 
 `results/` holds the reference outputs (tables and figures) of the revision analyses, and `docs/` the accompanying methods notes and data citations (`docs/DATA_CITATIONS.md`, `docs/data_citations.bib`).
 
-Each `<city>_ripley_points_with_income` file is the final deduplicated per-tree point dataset (crown centroid, crown area, census join, and income) used throughout the analysis scripts.
+Each `<city>_ripley_points_with_income` file is a deduplicated per-tree point dataset (crown centroid, crown area, census join, and income). The final files are in `data/tree_points/`; field definitions are in `data/tree_points/README.md`.
 
-Cupertino's and Bloomington's are small enough to commit as a single gzip file (~2.3 MB and ~4.8 MB compressed); decompress with:
+Cupertino's and Bloomington's are small enough to commit as a single gzip file (~9 MB and ~10 MB compressed); decompress with:
 
 ```bash
 gunzip -k data/tree_points/cupertino_ripley_points_with_income.geojson.gz
 ```
 
-Austin's and Surrey's raw datasets are 1.1 GB and 717 MB, too large for a single file on GitHub (100 MB hard limit) even after gzip (~85 MB and ~52 MB compressed), and too large for the web upload UI (25 MB per file) either way. They're split into ~9 MB chunks with `split`. Reassemble and decompress with:
+Austin's and Surrey's datasets are 2.3 GB and 670 MB, too large for a single file on GitHub (100 MB hard limit) even after gzip (~190 MB and ~57 MB compressed), and too large for the web upload UI (25 MB per file) either way. They're split into ~9 MB chunks with `split`. Reassemble and decompress with:
 
 ```bash
 cat data/tree_points/austin_ripley_points_with_income.geojson.gz.part* > austin_ripley_points_with_income.geojson.gz
@@ -85,7 +105,9 @@ gunzip surrey_ripley_points_with_income.geojson.gz
 
 The revision analyses use crown areas in m² that account for latitude: image pixels have a fixed size in degrees, so their ground area is `DEG_PER_PX² × 111320² × cos(latitude)` (about 0.32 m² per pixel in Surrey vs. 0.25 m² nominal). The corrected per-tree files (`<city>_ripley_points_with_income_corrected.geojson`) are an exact, deterministic function of the committed point data, so they are not stored separately. `repro_data.load_corrected_points()` rebuilds them in memory when a script needs them, and `python run_crown_area_correction_pipeline.py --write-points` writes them to `analysis_output/ripley_data_corrected/` (~2.2 GB for all four cities).
 
-## Reproducing the published figures (from committed data only)
+## Reproducing the original submission (from committed data only)
+
+The scripts in this section read the original-submission data in `data/original_submission/`.
 
 A subset of the paper's figures can be regenerated end-to-end from the data committed in this repository, with **no licensed imagery and no model weights**, only the Python packages in `requirements.txt`. After `pip install -r requirements.txt`:
 
@@ -97,14 +119,14 @@ This stages the committed `data/` archives into the locations the scripts read f
 
 | Output file | Paper figure | Inputs (all committed) |
 |---|---|---|
-| `crown_area_histogram.png` | Crown-area distributions (Extended Data Fig. 2) | `data/tree_points/` |
-| `combined_income_crown_area_scatter.{png,pdf}` | Income vs. crown area | `data/tree_points/` |
-| `identical_tree_density_map.{png,pdf}` | Tree-density choropleth (Fig. 1) | `data/tree_points/` + `data/boundaries/` |
-| `equity_results/all_cities_urban_covariates_corrected.csv`, `crown_area_correction_verification.csv` | Latitude-corrected census-unit metrics | `data/tree_points/` + `data/covariates/` |
-| `equity_results/combined_income_zscore_*_scatter*.{png,pdf,svg}` | Income vs. density, canopy cover, crown area (corrected) | `data/covariates/` |
-| `austin_spatial_analysis/` | Austin correlations, regressions, spatial error models, figures A to C | `data/covariates/` + `data/boundaries/` |
-| `surrey_reviewer2_analysis/` | Surrey crown-merging sensitivity tables, report, and figure | `data/tree_points/` + `data/covariates/` |
-| `redlining_figures/` | Austin HOLC figures 1 to 3 and polygon/grade/sensitivity tables | `data/tree_points/` + `data/redlining/` + `data/boundaries/` |
+| `crown_area_histogram.png` | Crown-area distributions (Extended Data Fig. 2) | `data/original_submission/tree_points/` |
+| `combined_income_crown_area_scatter.{png,pdf}` | Income vs. crown area | `data/original_submission/tree_points/` |
+| `identical_tree_density_map.{png,pdf}` | Tree-density choropleth (Fig. 1) | `data/original_submission/tree_points/` + `data/boundaries/` |
+| `equity_results/all_cities_urban_covariates_corrected.csv`, `crown_area_correction_verification.csv` | Latitude-corrected census-unit metrics | `data/original_submission/tree_points/` + `data/original_submission/covariates/` |
+| `equity_results/combined_income_zscore_*_scatter*.{png,pdf,svg}` | Income vs. density, canopy cover, crown area (corrected) | `data/original_submission/covariates/` |
+| `austin_spatial_analysis/` | Austin correlations, regressions, spatial error models, figures A to C | `data/original_submission/covariates/` + `data/boundaries/` |
+| `surrey_reviewer2_analysis/` | Surrey crown-merging sensitivity tables, report, and figure | `data/original_submission/tree_points/` + `data/original_submission/covariates/` |
+| `redlining_figures/` | Austin HOLC figures 1 to 3 and polygon/grade/sensitivity tables | `data/original_submission/tree_points/` + `data/redlining/` + `data/boundaries/` |
 
 Each table should match its copy in `results/` (checked on a clean copy of the repository; figures can differ slightly in font rendering if Arial is not installed). The park covariates are the one exception: `run_park_covariate_pipeline.py` downloads each city's current park layer, so a fresh run can drift from the committed `all_cities_park_covariates.csv` if a city edits its data.
 
@@ -116,7 +138,7 @@ TREE_MAPPING_CITIES=cupertino,bloomington bash reproduce.sh
 
 You can also run any of the scripts directly (for example `python plot_crown_area_histogram.py` or `python run_surrey_reviewer2_sensitivity.py`), as each one auto-stages the committed data via `repro_data.py` on import. Staging is idempotent and never overwrites existing outputs.
 
-The remaining figures (canopy cover and inventory-comparison analyses, Fig. 4's temperature-mediation model, and the raster-based detection maps) require inputs that cannot be redistributed here (licensed imagery, the model weights, municipal inventories, and raw census/temperature layers); see **What you'll need to add** below. The committed per-tree datasets already carry each tree's crown area, census unit, median household income, and demographic shares, so most census-level analyses can be recomputed directly from `data/tree_points/` without rerunning detection.
+The remaining figures (canopy cover and inventory-comparison analyses, Fig. 4's temperature-mediation model, and the raster-based detection maps) require inputs that cannot be redistributed here (licensed imagery, the model weights, municipal inventories, and raw census/temperature layers); see **What you'll need to add** below. The committed per-tree datasets already carry each tree's crown area, census unit, median household income, and demographic shares, so most census-level analyses can be recomputed directly from `data/original_submission/tree_points/` without rerunning detection.
 
 ## What you'll need to add
 
@@ -189,6 +211,6 @@ Scripts default to the current working directory if this isn't set. Expected sub
 
 If you use this code, please cite the manuscript and the original detection framework:
 
-> Neftaliem, L., Anderson, C.J., Igel, C., Field, C.B., Jackson, R.B., Small, J., Tucker, C.J. Mapping tree crowns across four North American cities. Manuscript submitted for publication.
+> Neftaliem, L., Anderson, C.J., Igel, C., Field, C.B., Jackson, R.B., Kariryaa, A., Small, J., Tucker, C.J. Mapping tree crowns across four North American cities. Manuscript submitted for publication.
 
 > Brandt, M. et al. An unexpectedly large count of trees in the West African Sahara and Sahel. *Nature* 587, 78–82 (2020).

@@ -1,0 +1,39 @@
+{
+ "input": "dataset/tree_crowns_v1b",
+ "ndvi_threshold": 0.2,
+ "rule": "drop crown if mean NDVI < threshold",
+ "cities": {
+  "austin": {
+   "n_in": 2677292,
+   "n_removed": 90380,
+   "n_removed_no_ndvi_data": 4,
+   "n_out": 2586912,
+   "share_removed": 0.03375799128372998,
+   "area_share_removed": 0.029501177219234176
+  },
+  "bloomington": {
+   "n_in": 144548,
+   "n_removed": 1225,
+   "n_removed_no_ndvi_data": 0,
+   "n_out": 143323,
+   "share_removed": 0.00847469352740958,
+   "area_share_removed": 0.009085492605935087
+  },
+  "cupertino": {
+   "n_in": 119171,
+   "n_removed": 758,
+   "n_removed_no_ndvi_data": 0,
+   "n_out": 118413,
+   "share_removed": 0.00636060786600767,
+   "area_share_removed": 0.003279630556206585
+  },
+  "surrey": {
+   "n_in": 793922,
+   "n_removed": 27927,
+   "n_removed_no_ndvi_data": 2,
+   "n_out": 765995,
+   "share_removed": 0.035175999657397074,
+   "area_share_removed": 0.028341633886171502
+  }
+ }
+}
