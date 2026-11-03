@@ -69,11 +69,11 @@ FINAL=/data/urban/tree_crowns_v1b OUT=/data/urban/tree_crowns_v1b_ndvi02 bash bu
 | 11, 12 | `11_validate_outputs.py`, `12_block_group_coverage.py` | Checks and coverage |
 | 17, 17b, 20 | `17_crown_ndvi.py`, `17b_crown_ndvi_join.py`, `20_ndvi_mask.py` | Mean NDVI under each crown; crowns with mean NDVI < 0.2 removed |
 
-The result is the final dataset: the points are in `data/tree_points/` (with `build_log.json` and `ndvi_mask_log.json`). Census units come from `data/boundaries/`. Steps 00 and 17 need the ACS and StatCan tables and the NASA PGC mosaics under `URBAN_DATA` (see `paths.py` and the script headers).
+The result is the final dataset: the points are in `data/tree_points/` (with `build_log.json` and `ndvi_mask_log.json`) and the crown outlines in `data/crown_polygons/`. Census units come from `data/boundaries/`. Steps 00 and 17 need the ACS and StatCan tables and the NASA PGC mosaics under `URBAN_DATA` (see `paths.py` and the script headers).
 
 ## 5. Statistics, figures and tables (`revision/analysis/`)
 
-Reassemble the city files in `data/tree_points/` into one folder (see `data/tree_points/README.md`), then:
+Reassemble the city files in `data/tree_points/` into one folder (see `data/tree_points/README.md`), add the crown polygons with `python revision/analysis/rebuild_polygons.py <tree points folder>` (from `data/crown_polygons/`), then:
 
 ```bash
 python revision/analysis/run_analysis.py --dataset <tree points folder> --label final --out <run folder> \
@@ -94,7 +94,7 @@ python revision/analysis/run_analysis.py --dataset <tree points folder> --label 
 | Fig. S6, Supplementary Note 5 (Ripley's L) | `figS6`, `figS6_plot` | `ripley_l.py`, `plot_ripley_s6.py` |
 | Figs. S9–S11 (HOLC redlining, Austin) | `figS9_11` | `repo_adapted/generate_redlining_figures.py` (`data/redlining/`) |
 | Fig. S12 (Surrey crown-merging sensitivity) | `figS12_stats`, `figS12_plot` | `repo_adapted/run_surrey_reviewer2_sensitivity.py`, `repo_adapted/plot_surrey_s12_three_panel.py` |
-| Sensitivity analyses | `sensitivity` | `sensitivity.py` (the polygon-union canopy variant needs the crown polygons) |
+| Sensitivity analyses | `sensitivity` | `sensitivity.py` |
 
 Other items:
 

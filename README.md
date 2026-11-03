@@ -19,13 +19,13 @@ Clone with `git clone --recurse-submodules` to include the instance-separation c
 | `revision/analysis/` | `run_analysis.py`, a single entry point that regenerates every tree-derived statistic, figure and table from one named dataset, plus the adjusted models, Ripley's L, Extended Data tables and figures, sensitivity analyses and land-cover diagnostics. `repo_adapted/` holds the versions of the root-level scripts used for the final run; `imagery_metadata/` makes Fig. 5 and Fig. S8; `climate_context/` computes the climate and built-up shares; `fig6_review/` makes Fig. 6. |
 | `results/final_v1b/` | Final statistics tables (unadjusted correlations, adjusted and spatial models, Ripley's L, inventory comparison, sensitivity analyses, Extended Data Table 1) and comparisons with the original submission (`comparison_to_original/`) |
 
-To rerun the analysis, decompress the four city files in `data/tree_points/` into one folder and run:
+The crown outlines are in `data/crown_polygons/`. To rerun the analysis, decompress the four city files in `data/tree_points/` into one folder, rebuild the full polygon files there with `python revision/analysis/rebuild_polygons.py <folder>`, and run:
 
 ```bash
 python revision/analysis/run_analysis.py --dataset <folder> --label final --out <run folder>
 ```
 
-Some steps need inputs not stored here: the licensed imagery, the crown polygons, the TIGER/Line and StatCan census tables, and the municipal tree inventories. Paths to local data are set with the `URBAN_DATA` environment variable (default `/path/to/Urban_data`); see [`REPRODUCING.md`](REPRODUCING.md).
+Some steps need inputs not stored here: the licensed imagery, the TIGER/Line and StatCan census tables, and the municipal tree inventories. Paths to local data are set with the `URBAN_DATA` environment variable (default `/path/to/Urban_data`); see [`REPRODUCING.md`](REPRODUCING.md).
 
 ## Repository contents (original submission)
 
@@ -72,6 +72,9 @@ data/
 │   ├── bloomington_ripley_points_with_income.geojson.gz
 │   ├── austin_ripley_points_with_income.geojson.gz.part00 ... part20
 │   └── surrey_ripley_points_with_income.geojson.gz.part00 ... part06
+├── crown_polygons/                                # FINAL crown outlines, joined to the points by tree_id (see data/crown_polygons/README.md)
+│   └── <city>_crown_polygons.geojson.gz.partNN
+├── parks/surrey/                                  # City of Surrey park and natural-area layers used for the park covariate
 ├── covariates/                                    # FINAL census-unit tables (1,344 analysis units)
 │   ├── all_cities_urban_covariates.csv            # income, housing, distance to downtown, tree metrics
 │   ├── all_cities_urban_covariates_corrected.csv  # same, with latitude-corrected crown area and canopy cover

@@ -40,6 +40,6 @@ cat data/tree_points/austin_ripley_points_with_income.geojson.gz.part* > austin_
 gunzip austin_ripley_points_with_income.geojson.gz
 ```
 
-The crown polygons (about 7.7 GB uncompressed for the four cities) are too large for this repository and are available on request.
+The crown outlines of the same trees are in `data/crown_polygons/` (joined to these points by `tree_id`).
 
 The datasets from the original submission are kept in `data/original_submission/` for comparison.
