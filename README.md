@@ -55,6 +55,8 @@ data/
 │   └── all_cities_park_covariates.csv             # park and natural-area coverage per census unit
 ├── redlining/
 │   └── austin_redlining_data.json                 # 1937 HOLC polygons (Mapping Inequality, CC BY-NC-SA 4.0; see data/redlining/README.md)
+├── imagery_cutlines/
+│   └── <city>_mosaic_cutlines.geojson             # source-image footprints, image IDs and acquisition metadata for every mosaic tile (see data/imagery_cutlines/README.md)
 └── validation/
     └── image_manifest_113.csv                     # the 113 annotated validation patches
 ```
@@ -128,7 +130,7 @@ This repo contains the analysis and post-processing code. To run the full pipeli
 
    Once you have the file, point the scripts at it via the `TREE_MAPPING_BASE_DIR` environment variable (see below) or place it at `saved_models/UNet/` under your base directory.
 
-3. **Satellite imagery.** Imagery was licensed from Vantor (QuickBird-2, GeoEye-1, WorldView-2, WorldView-3) under the Next View License and cannot be redistributed here. You'll need your own licensed source of comparable sub-meter multispectral imagery.
+3. **Satellite imagery.** Vantor imagery (QuickBird-2, GeoEye-1, WorldView-2, WorldView-3) was acquired by NASA under the Electro-Optical Commercial Layer License. The copyright remains with Vantor, and redistribution is not possible. The imagery is available to U.S. government-funded researchers through [EarthExplorer](https://earthexplorer.usgs.gov/) or from Vantor. The image IDs and acquisition metadata for every scene in our mosaics are listed in `data/imagery_cutlines/`.
 
 4. **Auxiliary data**, obtained from public sources and not redistributed in this repo:
    - Census boundaries: US Census Bureau TIGER/Line block groups (`tl_2023_<state>_bg`) and place boundaries; Statistics Canada dissemination area boundaries (`lda_000b21a_e`) for Surrey.
