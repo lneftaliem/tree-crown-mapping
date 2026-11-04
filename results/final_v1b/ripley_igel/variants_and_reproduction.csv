@@ -1,0 +1,17 @@
+data,city,total_areas,n_areas,rho,p,projection,area
+original (published) data,austin,693,601,0.0374453742947473,0.3594597948705475,EPSG:3857 (as published),bounding box
+original (published) data,cupertino,48,28,0.0711548987411056,0.7189916769031153,EPSG:3857 (as published),bounding box
+original (published) data,bloomington,70,56,0.0243335611756664,0.8587112437912475,EPSG:3857 (as published),bounding box
+original (published) data,surrey,666,563,0.0278815550621801,0.5091120216035562,EPSG:3857 (as published),bounding box
+final data,austin,693,606,0.1000544839618495,0.0137339146828641,EPSG:3857,bounding box
+final data,cupertino,48,28,0.1746031746031746,0.3741945166095801,EPSG:3857,bounding box
+final data,bloomington,70,58,0.2366421606324402,0.0736988479433673,EPSG:3857,bounding box
+final data,surrey,666,632,0.0194489911965794,0.6255368876449678,EPSG:3857,bounding box
+final data,austin,693,606,0.1041550771248611,0.0102973730105382,UTM,bounding box
+final data,cupertino,48,28,0.1707717569786535,0.3849302537293235,UTM,bounding box
+final data,bloomington,70,58,0.2323356608939063,0.0792592087397185,UTM,bounding box
+final data,surrey,666,632,0.0361106067284074,0.3647744194967353,UTM,bounding box
+final data,austin,693,606,0.1904835174253716,2.326508912442232e-06,UTM,convex hull (sensitivity)
+final data,cupertino,48,28,0.0147783251231527,0.9405026282514244,UTM,convex hull (sensitivity)
+final data,bloomington,70,58,0.1906856562797994,0.1516295463621292,UTM,convex hull (sensitivity)
+final data,surrey,666,632,0.084606108129206,0.0334559930340544,UTM,convex hull (sensitivity)

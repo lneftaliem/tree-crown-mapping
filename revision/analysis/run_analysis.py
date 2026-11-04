@@ -34,8 +34,12 @@ STEPS = [
     ('ed_fig1', [PY, f'{HERE}/ed_fig1.py'], ['analysis_output/extended_data/ED_Fig1_dedup_sensitivity.pdf']),
     ('ed_fig2', [PY, f'{REPO}/plot_crown_area_histogram.py'], ['analysis_output/crown_area_histogram.png']),
     ('figS5', [PY, f'{REPO}/inventory_correlation_analysis.py'], ['analysis_output/inventory_correlation/inventory_correlation_stats.csv']),
-    ('figS6', [PY, f'{HERE}/ripley_l.py'], ['analysis_output/ripley/ripley_auc_income_spearman.csv']),
-    ('figS6_plot', [PY, f'{HERE}/plot_ripley_s6.py'], ['analysis_output/ripley/FigS6_ripley_L_by_income_quartile.svg']),
+    # Fig. S6 / Supplementary Note 5: Christian Igel's Ripley's L code (ripley_igel/), in the UTM zone of each city
+    ('figS6', [PY, f'{HERE}/ripley_igel/figS6_step.py'], ['analysis_output/ripley_igel/notebook_stats.csv',
+                                                          'analysis_output/ripley_igel/L_quartiles_paper.png']),
+    # reference only (not in the manuscript): convex-hull re-implementation of the Note 5 formula used before revision
+    ('ripley_hull_reference', [PY, f'{HERE}/ripley_l.py'], ['analysis_output/ripley/ripley_auc_income_spearman.csv']),
+    ('ripley_hull_reference_plot', [PY, f'{HERE}/plot_ripley_s6.py'], ['analysis_output/ripley/FigS6_ripley_L_by_income_quartile.svg']),
     ('figS9_11', [PY, f'{REPO}/generate_redlining_figures.py'], ['analysis_output/redlining_figures/austin_holc_grade_metrics.csv']),
     ('figS12_stats', [PY, f'{REPO}/run_surrey_reviewer2_sensitivity.py'], ['analysis_output/surrey_reviewer2_analysis/surrey_sensitivity_scenarios_summary.csv']),
     ('figS12_plot', [PY, f'{REPO}/plot_surrey_s12_three_panel.py'], ['analysis_output/surrey_reviewer2_analysis/surrey_reviewer2_sensitivity_figure.pdf']),
