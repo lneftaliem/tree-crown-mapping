@@ -1,6 +1,6 @@
 # Instance separation
 
-Splits the binary U-Net predictions into individual crowns (step 3 of [`REPRODUCING.md`](../../REPRODUCING.md)) with the center-based instance separation of Ankit Kariryaa's [`separate_instances`](https://github.com/ankitkariryaa/separate_instances) (GPL-3.0). The code is included as the git submodule `external/separate_instances`, pinned to commit `d81cac7`.
+Splits the binary U-Net predictions into individual crowns (step 3 of [`REPRODUCING.md`](../../REPRODUCING.md)) with the center-based instance separation written by **Christian Igel and Ankit Kariryaa** ([`separate_instances`](https://github.com/ankitkariryaa/separate_instances), GPL-3.0). The method ("detect centre and relabel") is described in Mugabowindekwe et al. (2023), *Nature Climate Change* 13, 91–97, https://doi.org/10.1038/s41558-022-01544-w; please credit both authors and cite that paper when reusing it. The code is included as the git submodule `external/separate_instances`, pinned to commit `d81cac7`.
 
 | File | Purpose |
 |---|---|

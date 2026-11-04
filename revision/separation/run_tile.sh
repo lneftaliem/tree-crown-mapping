@@ -1,5 +1,5 @@
 #!/bin/bash
-# run_tile.sh <tile_name> <source: zip|cutouts|regen>   -- one tile, Christian's exact CLI and parameters.
+# run_tile.sh <tile_name> <source: zip|cutouts|regen>   -- one tile, the exact CLI and parameters of separate_instances (Christian Igel and Ankit Kariryaa).
 # Stages the input on node-local disk, runs the repo CLI, checks the result, and publishes it
 # atomically (copy to .partial, then rename), so an interrupted job never leaves a truncated output.
 set -uo pipefail

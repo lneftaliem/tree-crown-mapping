@@ -1,5 +1,5 @@
 #!/bin/bash
-# Reproduce Christian's supplied rasters for a few archive tiles (one tile per array task).
+# Reproduce the rasters supplied by Christian Igel for a few archive tiles (one tile per array task).
 #SBATCH --job-name=si_test
 #SBATCH --partition=serc
 #SBATCH --time=01:30:00

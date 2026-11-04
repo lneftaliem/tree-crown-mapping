@@ -37,7 +37,7 @@ python3 $EVAL $COMMON --output_dir $V/A  --cached_predictions $CACHE --pred_thre
 python3 $EVAL $COMMON --output_dir $V/A7 --cached_predictions $CACHE --pred_threshold 0.7 --input_channels ndvi_pan > A7.log 2>&1; echo "A7 exit $?"
 python3 $EVAL $COMMON --output_dir $V/B  --pred_threshold 0.7 --input_channels pan_pan --export_binary_dir $V/B/binary > B.log 2>&1;  echo "B exit $?"
 
-# instance separation of the PAN+PAN binarized patches, Christian's parameters (as citywide)
+# instance separation of the PAN+PAN binarized patches, separate_instances by Christian Igel and Ankit Kariryaa, same parameters as citywide
 ml purge; ml python/3.12.1; source $HOME/envs/separate_instances/bin/activate
 source $HOME/split_workflow/config.sh
 mkdir -p $V/sep_out $V/sep_log

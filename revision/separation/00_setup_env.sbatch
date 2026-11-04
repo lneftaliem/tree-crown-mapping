@@ -18,7 +18,7 @@ source $VENV/bin/activate
 pip install --quiet --upgrade pip
 # uv.lock at d81cac7 pins numpy 2.5.4 / scipy 1.18.1 / numba 0.68.1 ..., which have no wheels for Sherlock's
 # CentOS 7 (glibc 2.17). Use the newest manylinux2014 (glibc 2.17) wheels instead; never build from source.
-# Equivalence with Christian's rasters is verified pixel-for-pixel by 01_test_reproduce.sbatch.
+# Equivalence with the rasters supplied by Christian Igel is verified pixel-for-pixel by 01_test_reproduce.sbatch.
 pip install --quiet --only-binary=:all: numpy==2.2.6 scipy==1.15.3 numba==0.61.2 llvmlite==0.44.0 \
     rasterio==1.4.3 geopandas==1.0.1 shapely==2.0.7 pyogrio==0.10.0 pandas==2.2.3 pyproj==3.7.1 \
     psutil==7.0.0 joblib==1.5.1 tqdm==4.67.1

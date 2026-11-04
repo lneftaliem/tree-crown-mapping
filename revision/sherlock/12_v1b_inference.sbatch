@@ -29,7 +29,7 @@ import tensorflow; print('preflight tensorflow', tensorflow.__version__, 'ok', f
 EOF
 python3 $HOME/unet_workflow/regen_v1b.py $HOME/unet_workflow/v1_chunks/v1_$ID.txt $V1 $L_SCRATCH_JOB || exit 4
 
-# instance separation (Christian's separate_instances, -cn 8 -m 15, via the verified run_tile.sh wrapper)
+# instance separation (separate_instances by Christian Igel and Ankit Kariryaa, -cn 8 -m 15, via the verified run_tile.sh wrapper)
 ml purge; ml python/3.12.1; source $HOME/envs/separate_instances/bin/activate
 export REGEN=$V1/predictions OUT=$V1/split CENTERS=$V1/centers
 mkdir -p $OUT $CENTERS

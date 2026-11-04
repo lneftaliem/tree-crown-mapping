@@ -3,7 +3,7 @@
 # Writes only $GROUP_SCRATCH/leonan_split_2026/threshold_v1/.
 #   1. fresh NDVI+PAN predictions of the 113 patches (model trees_20260120-1928_..._final.keras), compared with the cached
 #      original predictions (object_validation_results/predictions.npy) for reproducibility;
-#   2. for tau in 0.3 / 0.5 / 0.7: binarize, separate instances with Christian's separate_instances (-cn 8 -m 15, as
+#   2. for tau in 0.3 / 0.5 / 0.7: binarize, separate instances with separate_instances (Christian Igel and Ankit Kariryaa) (-cn 8 -m 15, as
 #      citywide), and evaluate three object definitions with everything else identical:
 #        cc_<tau>      4-connected components (semantic-segmentation objects, the original protocol)
 #        inst_<tau>    instance-separated crowns

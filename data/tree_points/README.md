@@ -6,7 +6,7 @@ One file per city (`austin`, `bloomington`, `cupertino`, `surrey`): `<city>_ripl
 
 1. **Inference.** The fine-tuned U-Net was applied to every 16 × 16 km mosaic tile. Model input is channel 0 = panchromatic and channel 1 = NDVI, with per-patch normalization, a 224-pixel stride and maximum merging of overlapping patches.
 2. **Binary mask.** Predictions were thresholded at τ = 0.7.
-3. **Instance separation.** Contiguous canopy was split into individual crowns by center-based instance separation (15-pixel maximum filter, eight-connectivity).
+3. **Instance separation.** Contiguous canopy was split into individual crowns by center-based instance separation (15-pixel maximum filter, eight-connectivity), using the code written by Christian Igel and Ankit Kariryaa ([`separate_instances`](https://github.com/ankitkariryaa/separate_instances); Mugabowindekwe et al., 2023).
 4. **Size filter and deduplication.**
    - Crowns smaller than 3 m² were removed.
    - Crowns detected twice in overlapping tiles were deduplicated within 1.0 m.

@@ -43,7 +43,7 @@ sbatch --export=ALL,THRESH=0.7 revision/sherlock/12_v1b_inference.sbatch
 
 ## 3. Instance separation (`revision/separation/`, `external/separate_instances`)
 
-Touching crowns are split with the center-based instance separation of Ankit Kariryaa's [`separate_instances`](https://github.com/ankitkariryaa/separate_instances) (GPL-3.0), included as a git submodule pinned to commit `d81cac7`. Parameters: 15-pixel maximum filter, 8-connectivity (`config.sh`).
+Touching crowns are split with the center-based instance separation written by Christian Igel and Ankit Kariryaa ([`separate_instances`](https://github.com/ankitkariryaa/separate_instances), GPL-3.0; the "detect centre and relabel" method of Mugabowindekwe et al., 2023, *Nature Climate Change* 13, 91–97), included as a git submodule pinned to commit `d81cac7`. Parameters: 15-pixel maximum filter, 8-connectivity (`config.sh`).
 
 - `00_setup_env.sbatch` builds the Python environment; `01_test_reproduce.sbatch` checks the installation on test tiles.
 - `run_tile.sh <tile> regen` separates one prediction tile and checks that the output has the input's grid and footprint. It is called by step 2's job for every window.
