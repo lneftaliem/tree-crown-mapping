@@ -1,5 +1,5 @@
 """
-check_exact.py -- verifies that run_ripley.l_test_exact returns exactly the statistic of pointpats.l_test as Christian
+check_exact.py -- verifies that run_ripley.l_test_bbox (bounding-box area) returns exactly the statistic of pointpats.l_test as Christian
 Igel's process_city_trees.py calls it (n_simulations=0, linearized=True, hull=convex hull, r = 2, 4, ..., 50), on
 3 random census areas per city with 50-6,000 trees (pointpats builds the full distance matrix, so larger areas are
 skipped here). Prints the maximum absolute difference per area; expected 0.
@@ -9,7 +9,7 @@ import os, sys
 import numpy as np, pyogrio, pyproj
 from pointpats import l_test
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from run_ripley import l_test_exact, UTM  # noqa
+from run_ripley import l_test_bbox, UTM  # noqa
 
 D = sys.argv[1]
 sup = np.linspace(2, 50, 25)
@@ -24,7 +24,7 @@ for city in ['austin', 'bloomington', 'cupertino', 'surrey']:
         m = (p.block_group_id == u).values
         xy = np.c_[x[m], y[m]]
         a = l_test(xy, sup, n_simulations=0, linearized=True, hull='convex').statistic
-        b = l_test_exact(xy, sup, n_simulations=0, linearized=True).statistic
+        b = l_test_bbox(xy, sup, n_simulations=0, linearized=True).statistic
         d = float(np.max(np.abs(a - b))); worst = max(worst, d)
         print(city, u, m.sum(), f'max |diff| = {d:.2e}', flush=True)
 print('WORST', worst)

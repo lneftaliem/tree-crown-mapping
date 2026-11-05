@@ -41,7 +41,7 @@ Some steps need inputs not stored here: the licensed imagery, the TIGER/Line and
 | `tree_size_vs_income.py` | Analysis | Income vs. mean/median crown area per census unit (Fig. 4). |
 | `plot_crown_area_histogram.py` | Figures | Crown area distribution histograms across cities (Extended Data Fig. 2). |
 | `prepare_ripley_data.py` / `run_sensitivity.py` | Analysis | Ripley's K spatial clustering analysis and deduplication-threshold sensitivity test (Extended Data Fig. 1, Fig. S6). |
-| `revision/analysis/ripley_igel/` | Analysis | Ripley's L analysis for Fig. S6 and Supplementary Note 5, written by Christian Igel ([christian-igel/city-trees](https://github.com/christian-igel/city-trees)); revised version in UTM coordinates. |
+| `revision/analysis/ripley_igel/` | Analysis | Ripley's L analysis for Fig. S6 and Supplementary Note 5, written by Christian Igel ([christian-igel/city-trees](https://github.com/christian-igel/city-trees)); revised version in UTM coordinates with the convex hull of the trees as the area. |
 | `repro_data.py` | Reproducibility | Stages the committed `data/` archives (reassembles the split files, decompresses) into the layout the figure scripts read from. Imported automatically by the reproducible scripts. |
 | `reproduce.sh` | Reproducibility | One command that stages the committed data and regenerates every figure and table that can be built from the public data (no imagery or model weights required). |
 

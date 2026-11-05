@@ -91,7 +91,7 @@ python revision/analysis/run_analysis.py --dataset <tree points folder> --label 
 | Extended Data Fig. 1 | `ed_fig1` | `ed_fig1.py` |
 | Extended Data Fig. 2 | `ed_fig2` | `repo_adapted/plot_crown_area_histogram.py` |
 | Fig. S5, Supplementary Note 4 (municipal inventories) | `figS5` | `repo_adapted/inventory_correlation_analysis.py` (set `INVENTORY_CSV`) |
-| Fig. S6, Supplementary Note 5 (Ripley's L) | `figS6` | `ripley_igel/` (Christian Igel's code, UTM; see its README) |
+| Fig. S6, Supplementary Note 5 (Ripley's L) | `figS6` | `ripley_igel/` (Christian Igel's code, UTM, convex-hull area; see its README) |
 | Figs. S9–S11 (HOLC redlining, Austin) | `figS9_11` | `repo_adapted/generate_redlining_figures.py` (`data/redlining/`) |
 | Fig. S12 (Surrey crown-merging sensitivity) | `figS12_stats`, `figS12_plot` | `repo_adapted/run_surrey_reviewer2_sensitivity.py`, `repo_adapted/plot_surrey_s12_three_panel.py` |
 | Sensitivity analyses | `sensitivity` | `sensitivity.py` |
@@ -102,7 +102,7 @@ Other items:
 - **Climate and built-up context** (Köppen–Geiger × GHS-BUILT-S shares in the Introduction): `climate_context/audit_and_recalculate_independent_city_analysis.py` (inputs: Beck et al. 2018 Köppen–Geiger 1 km, GHS-BUILT-S R2023A 2020 30″, Natural Earth admin-1); results in `climate_context/*.csv`.
 - **Fig. 6** (example detections): `fig6_review/` (candidate windows, scoring, contact sheets, final figure); needs the NDVI mosaics.
 - **Fig. S4** (density of municipal inventory trees) and **Fig. S7** (resolution comparison) are unchanged from the original submission: Fig. S4 uses only the municipal inventories, not the model output, and Fig. S7 is an illustration made from the imagery.
-- The Ripley's L analysis (Fig. S6) is Christian Igel's code (`revision/analysis/ripley_igel/`, from github.com/christian-igel/city-trees), run in the UTM zone of each city; its results are in `results/final_v1b/ripley_igel/`. The earlier convex-hull re-implementation (`ripley_l.py`, `results/final_v1b/ripley/`) is kept as the reference step `ripley_hull_reference`.
+- The Ripley's L analysis (Fig. S6) is Christian Igel's code (`revision/analysis/ripley_igel/`, from github.com/christian-igel/city-trees), run in the UTM zone of each city with the convex hull of each polygon's trees as the area (pointpats uses the bounding box; see its README); its results are in `results/final_v1b/ripley_igel/`, with the previous bounding-box results in `utm_bbox_previous/`. The earlier convex-hull re-implementation (`ripley_l.py`, `results/final_v1b/ripley/`) is kept as the reference step `ripley_hull_reference`.
 - The final statistics produced by this step are in `results/final_v1b/`, for comparison.
 
 ## 6. Model validation (`revision/sherlock/`)

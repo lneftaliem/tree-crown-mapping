@@ -1,7 +1,7 @@
 """
 figS6_step.py -- the figS6 step of run_analysis.py: Fig. S6 and the Ripley's L statistics of Supplementary Note 5 with
 Christian Igel's code (process_city_trees.py + his notebook analysis, github.com/christian-igel/city-trees @ 3c57d4c),
-in the UTM zone of each city.
+in the UTM zone of each city, with the convex hull of the trees as the area.
 
 Stages a work directory <run>/analysis_output/ripley_igel/ with the dataset's tree points and the census-unit
 boundaries (through repro_data, so they are recorded in provenance/inputs_used.csv), runs run_ripley.py
@@ -26,7 +26,7 @@ for c in CITIES:
                      (bg, f'{W}/census_boundaries/{c}_exact_block_groups.geojson')):
         if not os.path.lexists(dst):
             os.symlink(os.path.realpath(src), dst)
-env = dict(os.environ, RIPLEY_PROJ='utm', RIPLEY_AREA='bbox', FIG_DPI='300')
+env = dict(os.environ, RIPLEY_PROJ='utm', RIPLEY_AREA='hull', FIG_DPI='300')
 subprocess.run([sys.executable, f'{HERE}/run_ripley.py', W] + CITIES, env=env, check=True)
 subprocess.run([sys.executable, f'{HERE}/analyze_notebook.py', W, 'final'], env=env, check=True)
 rows = []
